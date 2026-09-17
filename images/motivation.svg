@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bgMeditate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff6fa"/>
+      <stop offset="100%" stop-color="#ffd0e5"/>
+    </linearGradient>
+    <linearGradient id="petalPink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff86bf"/>
+      <stop offset="100%" stop-color="#cf437e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bgMeditate)"/>
+  <!-- Glow Circle -->
+  <circle cx="300" cy="200" r="100" fill="#ffffff" fill-opacity="0.7"/>
+  <!-- Lotus Flower / Calm symbol -->
+  <path d="M 300 120 C 320 160, 325 210, 300 240 C 275 210, 280 160, 300 120 Z" fill="url(#petalPink)"/>
+  <path d="M 300 240 C 330 235, 370 210, 370 170 C 350 205, 320 225, 300 240 Z" fill="#ff5ea8" fill-opacity="0.75"/>
+  <path d="M 300 240 C 270 235, 230 210, 230 170 C 250 205, 280 225, 300 240 Z" fill="#ff5ea8" fill-opacity="0.75"/>
+  <circle cx="300" cy="245" r="7" fill="#cf437e"/>
+</svg>

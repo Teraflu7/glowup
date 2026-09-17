@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bgWater" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff2f8"/>
+      <stop offset="100%" stop-color="#ffd8eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bgWater)"/>
+  <!-- Glass Bottle -->
+  <rect x="260" y="90" width="80" height="30" rx="6" fill="#ff86bf"/>
+  <path d="M 270 120 L 270 150 L 230 200 L 230 310 A 20 20 0 0 0 250 330 L 350 330 A 20 20 0 0 0 370 310 L 370 200 L 330 150 L 330 120 Z" fill="#ffffff" stroke="#cf437e" stroke-width="3" stroke-opacity="0.2"/>
+  <!-- Water Level Inside -->
+  <path d="M 233 240 Q 300 255, 367 240 L 367 310 A 17 17 0 0 1 350 327 L 250 327 A 17 17 0 0 1 233 310 Z" fill="#ff86bf" fill-opacity="0.4"/>
+  <!-- Floating Drops -->
+  <circle cx="410" cy="180" r="14" fill="#ff5ea8" fill-opacity="0.5"/>
+  <circle cx="190" cy="230" r="10" fill="#ff86bf" fill-opacity="0.6"/>
+  <circle cx="430" cy="230" r="8" fill="#cf437e" fill-opacity="0.4"/>
+</svg>
