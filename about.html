@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowUp — О нас и тарифы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar container">
+      <a href="index.html" class="brand" aria-label="GlowUp home">
+        <span class="brand-mark">G</span>
+        <span>GlowUp</span>
+      </a>
+      <nav class="nav" aria-label="Главная навигация">
+        <a href="index.html">Главная</a>
+        <a href="#team">Команда</a>
+        <a href="#plans">Тарифы</a>
+        <a href="#contact">Связь</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary">Присоединиться</a>
+    </header>
+
+    <main class="container">
+      <section class="team-section" id="team">
+        <div class="section-heading">
+          <p class="eyebrow">Наша команда</p>
+          <h2>Создатели GlowUp</h2>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Фото участника 1" class="profile-img">
+            <h3>Участник 1</h3>
+            <span class="role">Frontend Developer</span>
+            <p>Разработка интерфейса главной страницы, визуальной концепции и дизайн-системы.</p>
+          </article>
+          <article class="team-card">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80" alt="Фото участника 2" class="profile-img">
+            <h3>Участник 2</h3>
+            <span class="role">UI/UX & Logic</span>
+            <p>Проектирование страницы тарифов, интеграция форм обратной связи и адаптивность.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="table-section" id="plans">
+        <div class="section-heading">
+          <p class="eyebrow">Планы подписки</p>
+          <h2>Сравнение возможностей</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Опция</th>
+                <th>Free</th>
+                <th>Standard</th>
+                <th>Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Трекер привычек</td>
+                <td>До 3 шт.</td>
+                <td>До 10 шт.</td>
+                <td>Безлимитно</td>
+              </tr>
+              <tr>
+                <td>Аналитика недели</td>
+                <td>Базовая</td>
+                <td>Детальная</td>
+                <td>Глубокая + PDF</td>
+              </tr>
+              <tr>
+                <td>Уведомления</td>
+                <td>Стандартные</td>
+                <td>Умные пуши</td>
+                <td>Telegram-бот</td>
+              </tr>
+              <tr>
+                <td>Стоимость</td>
+                <td>0 ₸</td>
+                <td>1 990 ₸/мес</td>
+                <td>3 490 ₸/мес</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="form-section" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">Обратная связь</p>
+          <h2>Начните свой путь</h2>
+        </div>
+        <form id="contact-form" class="glow-form">
+          <div class="form-group">
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" name="name" placeholder="Алина" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+          </div>
+          <div class="form-group">
+            <label for="plan-select">Интересующий план</label>
+            <select id="plan-select" name="plan">
+              <option value="free">Free — Старт</option>
+              <option value="standard">Standard — Оптимальный</option>
+              <option value="pro">Pro — Максимум</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Цель или пожелание</label>
+            <textarea id="message" name="message" rows="4" placeholder="Хочу сформировать утреннюю рутину..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary large form-btn">Отправить заявку</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <div class="brand small">
+        <span class="brand-mark">G</span>
+        <span>GlowUp</span>
+      </div>
+      <p>Проект выполнили: [Имя Фамилия 1] и [Имя Фамилия 2]</p>
+    </footer>
+  </div>
+</body>
+</html>
