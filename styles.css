@@ -784,3 +784,36 @@ button {
     grid-template-columns: 1fr;
   }
 }
+/* FAQ Page Styles */
+.faq-hero {
+  padding-top: 40px;
+}
+
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.faq-item {
+  padding: 24px 28px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 24px rgba(120, 61, 92, 0.04);
+}
+
+.faq-item h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
