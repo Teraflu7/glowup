@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title">
+  <title id="title">Gentle stretching</title>
+  <rect width="600" height="400" fill="#fff9fc"/>
+  <circle cx="460" cy="92" r="72" fill="#ffd6ea"/>
+  <circle cx="302" cy="92" r="28" fill="#cf437e"/>
+  <path d="M302 126c-8 51-18 88-50 123M294 149l-94 48M290 151l92 48M252 249l-42 72M252 249l72 63" fill="none" stroke="#7f4c88" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M132 321h308" stroke="#ff86bf" stroke-width="14" stroke-linecap="round"/>
+  <path d="M420 170c26 12 42 34 48 64" fill="none" stroke="#ff5ea8" stroke-width="10" stroke-linecap="round"/>
+</svg>

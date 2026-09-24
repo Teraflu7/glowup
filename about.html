@@ -11,18 +11,16 @@
 </head>
 <body>
   <div class="page-shell">
-    <header class="topbar container">
-      <a href="index.html" class="brand" aria-label="GlowUp home">
-        <span class="brand-mark">G</span>
-        <span>GlowUp</span>
-      </a>
- <nav class="nav" aria-label="Главная навигация">
-          <a href="index.html">Главная</a>
-          <a href="about.html">О нас</a>
-          <a href="blog.html">Блог</a>
-          <a href="faq.html">FAQ</a>
-        </nav>
-      <a href="#contact" class="btn btn-primary">Присоединиться</a>
+    <header class="site-header">
+      <div class="logo">
+        <a href="index.html">GlowUp</a>
+      </div>
+      <nav class="nav-links" aria-label="Главная навигация">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
     </header>
 
     <main class="container">
@@ -35,13 +33,13 @@
           <article class="team-card">
             <img src="images/Alina.jpg" alt="Alina" class="profile-img">
             <h3>Алина</h3>
-            <span class="role">Frontend Developer</span>
+            <span class="role">Разработчик интерфейса</span>
             <p>Разработка интерфейса главной страницы, визуальной концепции и дизайн-системы.</p>
           </article>
           <article class="team-card">
             <img src="images/Tamiris.jpg" alt="Tamiris" class="profile-img">
             <h3>Тамирис</h3>
-            <span class="role">UI/UX & Logic</span>
+            <span class="role">Интерфейс, опыт и логика</span>
             <p>Проектирование страницы тарифов, интеграция форм обратной связи и адаптивность.</p>
           </article>
         </div>
@@ -57,9 +55,9 @@
             <thead>
               <tr>
                 <th>Опция</th>
-                <th>Free</th>
-                <th>Standard</th>
-                <th>Pro</th>
+                <th>Бесплатный</th>
+                <th>Стандартный</th>
+                <th>Про</th>
               </tr>
             </thead>
             <tbody>
@@ -109,9 +107,9 @@
           <div class="form-group">
             <label for="plan-select">Интересующий план</label>
             <select id="plan-select" name="plan">
-              <option value="free">Free — Старт</option>
-              <option value="standard">Standard — Оптимальный</option>
-              <option value="pro">Pro — Максимум</option>
+                <option value="free">Бесплатный — Старт</option>
+                <option value="standard">Стандартный — Оптимальный</option>
+                <option value="pro">Про — Максимум</option>
             </select>
           </div>
           <div class="form-group">

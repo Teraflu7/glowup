@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title">
+  <title id="title">Restful sleep</title>
+  <rect width="600" height="400" fill="#fff2f8"/>
+  <circle cx="450" cy="98" r="66" fill="#7f4c88"/>
+  <circle cx="478" cy="76" r="66" fill="#fff2f8"/>
+  <path d="M126 286h350" stroke="#cf437e" stroke-width="16" stroke-linecap="round"/>
+  <path d="M156 286v-72c0-20 16-36 36-36h212c20 0 36 16 36 36v72" fill="#fff" stroke="#cf437e" stroke-width="10"/>
+  <path d="M156 244h284" stroke="#ff86bf" stroke-width="10"/>
+  <path d="M188 210h100" stroke="#7f4c88" stroke-width="12" stroke-linecap="round"/>
+  <text x="164" y="128" fill="#ff5ea8" font-family="sans-serif" font-size="42" font-weight="700">Z</text>
+  <text x="205" y="98" fill="#ff86bf" font-family="sans-serif" font-size="28" font-weight="700">Z</text>
+</svg>

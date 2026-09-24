@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-labelledby="title">
+  <title id="title">Daily journal</title>
+  <rect width="600" height="400" fill="#fff9fc"/>
+  <rect x="154" y="54" width="292" height="292" rx="22" fill="#fff" stroke="#cf437e" stroke-width="9"/>
+  <path d="M202 54v292M244 122h148M244 170h112M244 218h132M244 266h92" stroke="#7f4c88" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="204" cy="122" r="13" fill="#ff5ea8"/>
+  <circle cx="204" cy="170" r="13" fill="#ff86bf"/>
+  <circle cx="204" cy="218" r="13" fill="#d17a88"/>
+  <path d="m408 80 38-38 34 34-38 38z" fill="#ffd6ea" stroke="#cf437e" stroke-width="8"/>
+  <path d="m420 68 34 34" stroke="#cf437e" stroke-width="8"/>
+</svg>
