@@ -932,3 +932,106 @@ button {
 .nav-links a:hover {
   color: #d17a88; /* Акцентный цвет проекта */
 }
+
+/* --- Task 3: Page Layout with Grid Areas --- */
+.grid-page-layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  gap: 1.5rem;
+}
+
+.layout-header {
+  grid-area: header;
+}
+
+.layout-sidebar {
+  grid-area: sidebar;
+  align-self: start;
+  margin-left: 1.5rem;
+  background-color: #fcf8f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.layout-sidebar h3 {
+  margin-top: 0;
+}
+
+.layout-sidebar ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.layout-sidebar a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.layout-sidebar a:hover {
+  color: var(--pink-700);
+}
+
+.layout-main {
+  grid-area: main;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.layout-main > h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.06em;
+}
+
+.layout-intro {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+}
+
+.layout-footer {
+  grid-area: footer;
+  background-color: #2b2b2b;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.layout-footer p {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .grid-page-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+
+  .site-header {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .layout-sidebar {
+    margin: 0 1.5rem;
+  }
+
+  .layout-main {
+    padding: 0 1.5rem 1.5rem;
+  }
+}
