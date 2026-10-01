@@ -1108,3 +1108,38 @@ button {
     padding: 0 1.5rem 1.5rem;
   }
 }
+
+/* Assignment 3, Part 1: CSS media queries (no Bootstrap). */
+/* Desktop: three cards in one row. */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cards-container .card {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+@media (min-width: 901px) {
+  .hero-copy h1 { font-size: 4.5rem; }
+  .section-heading h2, .section-title, .layout-main > h1 { font-size: 3rem; }
+  .lead { font-size: 1.125rem; }
+}
+
+/* Tablet: two cards, medium-size type. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .cards-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-copy h1 { font-size: 3.5rem; }
+  .section-heading h2, .section-title, .layout-main > h1 { font-size: 2.5rem; }
+  .lead { font-size: 1rem; }
+}
+
+/* Mobile: stacked cards and smaller type. */
+@media (max-width: 600px) {
+  .cards-container { grid-template-columns: 1fr; }
+  .hero-copy h1 { font-size: 2.5rem; }
+  .section-heading h2, .section-title, .layout-main > h1 { font-size: 2rem; }
+  .lead { font-size: 0.95rem; }
+}
