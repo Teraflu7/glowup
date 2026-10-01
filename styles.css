@@ -97,35 +97,6 @@ button {
   color: var(--pink-700);
 }
 
-.btn {
-  border: 0;
-  border-radius: 999px;
-  padding: 0.9rem 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--pink-500), var(--pink-300));
-  color: #fff;
-  box-shadow: 0 18px 30px rgba(255, 94, 168, 0.28);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.large {
-  padding: 1.05rem 1.7rem;
-}
-
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -450,7 +421,7 @@ button {
   padding: 2rem 0;
 }
 
-.card {
+.cards-section .card {
   flex: 1 1 300px;
   max-width: 360px;
   display: flex;
@@ -462,31 +433,31 @@ button {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.cards-section .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
-.card-img {
+.cards-section .card-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   background: #faf4f5;
 }
 
-.card-content {
+.cards-section .card-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: 1.5rem;
 }
 
-.card-title {
+.cards-section .card-title {
   margin: 0 0 0.75rem;
   font-size: 1.25rem;
 }
 
-.card-text {
+.cards-section .card-text {
   flex-grow: 1;
   margin: 0 0 1.25rem;
   font-size: 0.95rem;
@@ -494,7 +465,7 @@ button {
   line-height: 1.6;
 }
 
-.card-btn {
+.cards-section .card-btn {
   display: inline-block;
   text-align: center;
   padding: 0.6rem 1.2rem;
@@ -506,7 +477,7 @@ button {
   transition: background-color 0.3s;
 }
 
-.card-btn:hover {
+.cards-section .card-btn:hover {
   background-color: #b86270;
 }
 
@@ -604,10 +575,6 @@ button {
 
   .hero {
     padding-top: 30px;
-  }
-
-  .btn {
-    width: 100%;
   }
 
   .hero-actions {
@@ -761,11 +728,6 @@ button {
   box-shadow: 0 0 0 3px rgba(255, 94, 168, 0.15);
 }
 
-.form-btn {
-  margin-top: 10px;
-  width: 100%;
-}
-
 @media (max-width: 650px) {
   .team-grid {
     grid-template-columns: 1fr;
@@ -860,7 +822,7 @@ button {
   line-height: 1.6;
 }
 
-/* --- Task 4: Image Gallery (Grid) --- */
+/* Assignment 3: Bootstrap carousel of the nine existing gallery images. */
 .image-gallery {
   padding: 0 0 48px;
 }
@@ -869,67 +831,45 @@ button {
   margin-bottom: 26px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.gallery-item {
-  position: relative;
-  min-width: 0;
-  aspect-ratio: 3 / 2;
-  margin: 0;
+.habit-carousel {
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 24px;
   background: var(--pink-50);
   border: 1px solid var(--border);
   box-shadow: 0 16px 28px rgba(120, 61, 92, 0.08);
 }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+.habit-carousel .carousel-item img {
+  height: clamp(260px, 42vw, 520px);
+  object-fit: contain;
 }
 
-.gallery-item figcaption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 20px 16px 14px;
-  background: linear-gradient(transparent, rgba(34, 23, 32, 0.78));
-  color: #fff;
+.habit-carousel .carousel-caption {
+  right: 15%;
+  bottom: 2.5rem;
+  left: 15%;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+}
+
+.habit-carousel .carousel-caption p {
+  margin: 0;
   font-weight: 700;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img,
-.gallery-item:focus-within img {
-  transform: scale(1.05);
-}
-
-.gallery-item:hover figcaption,
-.gallery-item:focus-within figcaption {
-  transform: translateY(0);
-}
-
-@media (max-width: 900px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.habit-carousel .carousel-control-prev,
+.habit-carousel .carousel-control-next {
+  width: 12%;
 }
 
 @media (max-width: 560px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-item figcaption {
-    transform: translateY(0);
+  .habit-carousel .carousel-caption {
+    right: 10%;
+    bottom: 2rem;
+    left: 10%;
+    font-size: 0.85rem;
   }
 }
 
@@ -1165,4 +1105,79 @@ button {
 .site-header .nav-link:hover,
 .site-header .nav-link:focus-visible {
   color: var(--pink-700);
+}
+
+/* Bootstrap buttons keep the GlowUp palette. */
+.btn-primary {
+  --bs-btn-bg: #cf437e;
+  --bs-btn-border-color: #cf437e;
+  --bs-btn-hover-bg: #ac3268;
+  --bs-btn-hover-border-color: #ac3268;
+  --bs-btn-active-bg: #922a59;
+  --bs-btn-active-border-color: #922a59;
+  --bs-btn-focus-shadow-rgb: 207, 67, 126;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #a32b62;
+  --bs-btn-border-color: #a32b62;
+  --bs-btn-hover-bg: #a32b62;
+  --bs-btn-hover-border-color: #a32b62;
+  --bs-btn-active-bg: #922a59;
+  --bs-btn-active-border-color: #922a59;
+  --bs-btn-focus-shadow-rgb: 163, 43, 98;
+}
+
+.hero-actions.btn-group {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+.bootstrap-card {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.bootstrap-card .card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: var(--pink-50);
+}
+
+.bootstrap-card .card-text {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.bootstrap-card.feature-card {
+  padding: 0;
+}
+
+.blog-grid.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+}
+
+.blog-grid.card-group > .card {
+  flex: 1 1 230px;
+  margin: 0;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+@media (max-width: 560px) {
+  .hero-actions.btn-group {
+    width: 100%;
+  }
+
+  .hero-actions.btn-group .btn {
+    flex: 1 1 50%;
+    white-space: normal;
+    font-size: 0.85rem;
+  }
 }
