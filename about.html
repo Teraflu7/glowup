@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <div class="page-shell">
     <header class="site-header navbar navbar-expand-lg py-3 px-3 px-lg-5">
       <div class="container-fluid">
@@ -24,14 +25,15 @@
         <nav class="navbar-nav ms-lg-auto" aria-label="Главная навигация">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="blog.html">Blog</a>
-          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="about.html" aria-current="page">About</a>
           <a class="nav-link" href="faq.html">FAQ</a>
         </nav>
       </div>
       </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
+      <h1 class="visually-hidden">О GlowUp и тарифах</h1>
       <section class="team-section pt-5 mt-lg-4 px-sm-2" id="team">
         <div class="section-heading">
           <p class="eyebrow">Наша команда</p>
@@ -39,13 +41,13 @@
         </div>
         <div class="row g-4 team-grid">
           <div class="col-12 col-lg-6"><article class="team-card h-100">
-            <img src="images/Alina.jpg" alt="Alina" class="profile-img">
+            <img src="images/Alina.jpg" alt="Фото Алины" class="profile-img">
             <h3>Алина</h3>
             <span class="role">Разработчик интерфейса</span>
             <p>Разработка интерфейса главной страницы, визуальной концепции и дизайн-системы.</p>
           </article></div>
           <div class="col-12 col-lg-6"><article class="team-card h-100">
-            <img src="images/Tamiris.jpg" alt="Tamiris" class="profile-img">
+            <img src="images/Tamiris.jpg" alt="Фото Тамирис" class="profile-img">
             <h3>Тамирис</h3>
             <span class="role">Интерфейс, опыт и логика</span>
             <p>Проектирование страницы тарифов, интеграция форм обратной связи и адаптивность.</p>
@@ -60,35 +62,36 @@
         </div>
         <div class="table-wrap">
           <table class="pricing-table">
+            <caption class="visually-hidden">Сравнение тарифов GlowUp</caption>
             <thead>
               <tr>
-                <th>Опция</th>
-                <th>Бесплатный</th>
-                <th>Стандартный</th>
-                <th>Про</th>
+                <th scope="col">Опция</th>
+                <th scope="col">Бесплатный</th>
+                <th scope="col">Стандартный</th>
+                <th scope="col">Про</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Трекер привычек</td>
+                <th scope="row">Трекер привычек</th>
                 <td>До 3 шт.</td>
                 <td>До 10 шт.</td>
                 <td>Безлимитно</td>
               </tr>
               <tr>
-                <td>Аналитика недели</td>
+                <th scope="row">Аналитика недели</th>
                 <td>Базовая</td>
                 <td>Детальная</td>
                 <td>Глубокая + PDF</td>
               </tr>
               <tr>
-                <td>Уведомления</td>
+                <th scope="row">Уведомления</th>
                 <td>Стандартные</td>
                 <td>Умные пуши</td>
                 <td>Telegram-бот</td>
               </tr>
               <tr>
-                <td>Стоимость</td>
+                <th scope="row">Стоимость</th>
                 <td>0 ₸</td>
                 <td>1 990 ₸/мес</td>
                 <td>3 490 ₸/мес</td>
@@ -101,30 +104,52 @@
       <section class="form-section pt-5 mt-lg-4 px-sm-2" id="contact">
         <div class="section-heading">
           <p class="eyebrow">Обратная связь</p>
-          <h2>Начните свой путь</h2>
+          <h2 id="contact-title">Начните свой путь</h2>
         </div>
-        <form id="contact-form" class="glow-form">
-          <div class="form-group">
-            <label for="name">Ваше имя</label>
-            <input type="text" id="name" name="name" placeholder="Алина" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Электронная почта</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-          </div>
-          <div class="form-group">
-            <label for="plan-select">Интересующий план</label>
-            <select id="plan-select" name="plan">
+        <form id="contact-form" class="glow-form" aria-labelledby="contact-title">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="name">Ваше имя</label>
+              <input class="form-control" type="text" id="name" name="name" autocomplete="name" placeholder="Алина" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label" for="email">Электронная почта</label>
+              <div class="input-group">
+                <span class="input-group-text" aria-hidden="true">@</span>
+                <input class="form-control" type="email" id="email" name="email" autocomplete="email" placeholder="example@mail.com" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="plan-select">Интересующий план</label>
+              <select class="form-select" id="plan-select" name="plan">
                 <option value="free">Бесплатный — Старт</option>
                 <option value="standard">Стандартный — Оптимальный</option>
                 <option value="pro">Про — Максимум</option>
-            </select>
+              </select>
+            </div>
+            <fieldset class="col-12">
+              <legend class="col-form-label pt-0 fw-semibold">Главная цель</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="goal" id="goal-habit" value="habit" checked>
+                <label class="form-check-label" for="goal-habit">Сформировать привычку</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="goal" id="goal-motivation" value="motivation">
+                <label class="form-check-label" for="goal-motivation">Поддерживать мотивацию</label>
+              </div>
+            </fieldset>
+            <div class="col-12">
+              <label class="form-label" for="message">Цель или пожелание</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Хочу сформировать утреннюю рутину..." required></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="tips" name="tips" value="yes">
+                <label class="form-check-label" for="tips">Интересуют советы по привычкам</label>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="message">Цель или пожелание</label>
-            <textarea id="message" name="message" rows="4" placeholder="Хочу сформировать утреннюю рутину..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg w-100">Отправить заявку</button>
+          <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Отправить заявку</button>
         </form>
       </section>
     </main>
@@ -134,7 +159,7 @@
         <span class="brand-mark">G</span>
         <span>GlowUp</span>
       </div>
-      <p>Проект выполнили: [Мукиева Тамирис] и [Абдубек Алина]</p>
+      <p>Проект выполнили: Мукиева Тамирис и Абдубек Алина</p>
     </footer>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

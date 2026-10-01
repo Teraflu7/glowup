@@ -7,7 +7,7 @@
   --pink-100: #ffd6ea;
   --pink-300: #ff86bf;
   --pink-500: #ff5ea8;
-  --pink-700: #cf437e;
+  --pink-700: #a32b62;
   --purple-700: #7f4c88;
   --text: #221720;
   --muted: #675764;
@@ -469,7 +469,7 @@ button {
   display: inline-block;
   text-align: center;
   padding: 0.6rem 1.2rem;
-  background-color: #d17a88;
+  background-color: #9f3c5b;
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
@@ -478,7 +478,7 @@ button {
 }
 
 .cards-section .card-btn:hover {
-  background-color: #b86270;
+  background-color: #812844;
 }
 
 .testimonial {
@@ -666,7 +666,7 @@ button {
   border-bottom: 1px solid var(--border);
 }
 
-.pricing-table th {
+.pricing-table thead th {
   background: rgba(255, 242, 248, 0.6);
   color: var(--pink-700);
   font-weight: 800;
@@ -675,7 +675,13 @@ button {
   letter-spacing: 0.05em;
 }
 
-.pricing-table tr:last-child td {
+.pricing-table tbody th {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pricing-table tr:last-child td,
+.pricing-table tr:last-child th {
   border-bottom: none;
   font-weight: 700;
   color: var(--pink-700);
@@ -694,38 +700,34 @@ button {
   box-shadow: var(--shadow);
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-size: 0.85rem;
+.glow-form .form-label,
+.glow-form .col-form-label {
   font-weight: 700;
-  color: var(--muted);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: #ffffff;
-  font-family: inherit;
-  font-size: 0.95rem;
   color: var(--text);
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--pink-500);
-  box-shadow: 0 0 0 3px rgba(255, 94, 168, 0.15);
+.glow-form .form-control,
+.glow-form .form-select,
+.glow-form .input-group-text,
+.glow-form .form-check-input {
+  border-color: #8b6f7d;
+}
+
+.glow-form .input-group-text {
+  background: var(--pink-50);
+  color: var(--text);
+}
+
+.glow-form .form-check-input:checked {
+  background-color: var(--pink-700);
+  border-color: var(--pink-700);
+}
+
+.glow-form .form-control:focus,
+.glow-form .form-select:focus,
+.glow-form .form-check-input:focus {
+  border-color: var(--pink-700);
+  box-shadow: 0 0 0 0.25rem rgba(163, 43, 98, 0.2);
 }
 
 @media (max-width: 650px) {
@@ -1109,8 +1111,8 @@ button {
 
 /* Bootstrap buttons keep the GlowUp palette. */
 .btn-primary {
-  --bs-btn-bg: #cf437e;
-  --bs-btn-border-color: #cf437e;
+  --bs-btn-bg: #b73270;
+  --bs-btn-border-color: #b73270;
   --bs-btn-hover-bg: #ac3268;
   --bs-btn-hover-border-color: #ac3268;
   --bs-btn-active-bg: #922a59;
@@ -1179,5 +1181,41 @@ button {
     flex: 1 1 50%;
     white-space: normal;
     font-size: 0.85rem;
+  }
+}
+
+/* Keyboard navigation and motion preferences. */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2000;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--pink-700);
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--pink-700);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
