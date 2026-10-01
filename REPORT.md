@@ -1,101 +1,102 @@
 # Front End Assignment 3 — GlowUp
 
-## Данные проекта
+## Project Information
 
-- **Проект:** GlowUp — сайт для формирования полезных привычек
-- **Участники:** Мукиева Тамирис; Абдубек Алина
-- **Группа:** `[УКАЖИТЕ НОМЕР ГРУППЫ]`
-- **Публичный URL:** `[ДОБАВЬТЕ ССЫЛКУ ПОСЛЕ ПУБЛИКАЦИИ]`
-- **Технологии:** HTML5, CSS3, Bootstrap 5.3.8
+- **Project:** GlowUp — a website for building healthy habits
+- **Team members:** Tamiris Mukieva; Alina Abdubek
+- **Group:** `[ENTER GROUP NUMBER]`
+- **Public URL:** `[ADD THE DEPLOYED WEBSITE URL]`
+- **Technologies:** HTML5, CSS3, Bootstrap 5.3.8
 
-## Цель
+## Objective
 
-Цель работы — сделать существующий многостраничный сайт адаптивным с помощью CSS media queries и Bootstrap, применить компоненты Bootstrap, сохранить семантичную структуру и обеспечить базовую доступность.
+The objective was to make an existing multi-page website responsive with CSS media queries and Bootstrap, use the required Bootstrap components, preserve semantic HTML, and provide basic accessibility.
 
-## Выполненные задания
+## Completed Tasks
 
-### 1. Адаптивная типографика
+### 1. Responsive Typography
 
-В `styles.css` добавлены отдельные media queries для desktop, tablet и mobile. В них изменяются размеры главного заголовка, заголовков секций и вводного текста. Это решение не зависит от Bootstrap.
+`styles.css` contains separate media queries for desktop, tablet, and mobile screens. They adjust the main heading, section headings, and introductory text without relying on Bootstrap.
 
-### 2. Адаптивный ряд CSS-карточек
+### 2. Responsive CSS Card Row
 
-На главной странице секция `.cards-container` содержит три карточки. Через CSS media queries она отображает:
+The `.cards-container` section on the home page contains three cards. CSS media queries display:
 
-- 3 карточки в строку на desktop;
-- 2 карточки в строку на tablet;
-- 1 карточку в строку на mobile.
+- three cards per row on desktop screens;
+- two cards per row on tablet screens;
+- one card per row on mobile screens.
 
-Для этого ряда Bootstrap Grid не используется.
+Bootstrap Grid is not used for this card row.
 
 ### 3. Bootstrap Grid
 
-На главной странице блок преимуществ построен с `container`, `row`, `col-12`, `col-sm-6`, `col-md-6`, `col-lg-4`. На странице About блок команды использует `col-12`, `col-sm-12`, `col-md-6`, `col-lg-6`. Так выполнены варианты из трёх и двух колонок.
+The features section on the home page uses `container`, `row`, `col-12`, `col-sm-6`, `col-md-6`, and `col-lg-4`. The team section on the About page uses `col-12`, `col-sm-12`, `col-md-6`, and `col-lg-6`. These sections demonstrate both three-column and two-column layouts.
 
-### 4. Bootstrap spacing utilities
+### 4. Bootstrap Spacing Utilities
 
-Видимые отступы перенесены из пользовательского CSS в Bootstrap-классы: `m-*`, `p-*`, `mt-*`, `mb-*`, `px-*`, `py-*`, `mx-auto`. Использованы адаптивные варианты `px-sm-2`, `mt-lg-4`, `px-lg-5`, `p-md-4`.
+Visible spacing was moved from custom CSS to Bootstrap utility classes such as `m-*`, `p-*`, `mt-*`, `mb-*`, `px-*`, `py-*`, and `mx-auto`. Responsive utilities include `px-sm-2`, `mt-lg-4`, `px-lg-5`, and `p-md-4`.
 
 ### 5. Bootstrap Navbar
 
-На всех четырёх страницах используется адаптивный `navbar navbar-expand-lg` с четырьмя ссылками: Home, Blog, About и FAQ. На узком экране меню сворачивается и открывается кнопкой `navbar-toggler`.
+All four pages use a responsive `navbar navbar-expand-lg` with four links: Home, Blog, About, and FAQ. The navigation collapses behind a `navbar-toggler` button on narrow screens.
 
 ### 6. Bootstrap Buttons
 
-Все видимые кнопки и ссылки-действия оформлены классами Bootstrap: `btn-primary`, `btn-outline-primary`, `btn-lg`, `btn-sm`. На главной странице две основные кнопки объединены в `btn-group`.
+All visible action buttons and button-style links use Bootstrap classes, including `btn-primary`, `btn-outline-primary`, `btn-lg`, and `btn-sm`. The two main actions on the home page are combined in a `btn-group`.
 
 ### 7. Bootstrap Carousel
 
-На странице Blog добавлена Bootstrap-карусель с девятью изображениями. Реализованы девять индикаторов, кнопки перехода назад и вперёд, подписи и альтернативный текст изображений.
+The Blog page contains a Bootstrap carousel with nine images. It includes nine indicators, previous and next controls, captions, and descriptive alternative text.
 
 ### 8. Bootstrap Cards
 
-На главной странице есть три Bootstrap-карточки с изображением, заголовком, текстом и кнопкой. На странице Blog три карточки статей объединены классом `card-group`.
+The home page contains three Bootstrap cards with an image, title, text, and button. The Blog page contains three article cards combined with the `card-group` class.
 
 ### 9. Responsive Form Controls
 
-На странице About форма использует `form-control`, `form-select`, `form-check-input`, `input-group`, `row`, `col-sm-4`, `col-sm-8`, `col-md-*` и `col-lg-*`. Для полей настроены подписи, обязательность заполнения и подсказки.
+The About page form uses `form-control`, `form-select`, `form-check-input`, `input-group`, `row`, `col-sm-*`, `col-md-*`, and `col-lg-*`. The form includes labels, required fields, and supporting instructions.
 
-### 10. Семантика и доступность
+### 10. Semantics and Accessibility
 
-Страницы используют `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, связанные `label`, информативные `alt` и `aria-*`. Добавлена ссылка перехода к основному содержимому, заметный `:focus-visible` и поддержка `prefers-reduced-motion`. Цвета интерактивных элементов затемнены для читаемого контраста.
+The pages use `header`, `nav`, `main`, `section`, `article`, `aside`, and `footer`. Form labels are connected to their controls, images have meaningful `alt` text, and interactive elements use appropriate `aria-*` attributes. The project also includes a skip link, visible `:focus-visible` styles, and support for `prefers-reduced-motion`.
 
-## Распределение работы
+## Work Distribution
 
-- **Мукиева Тамирис:** задания 1–5 — media queries, CSS-карточки, Bootstrap Grid, spacing utilities и navbar.
-- **Абдубек Алина:** задания 6–10 — кнопки, carousel, Bootstrap cards, форма и доступность.
+- **Tamiris Mukieva:** Tasks 1–5 — media queries, CSS cards, Bootstrap Grid, spacing utilities, and navbar.
+- **Alina Abdubek:** Tasks 6–10 — buttons, carousel, Bootstrap cards, form, and accessibility.
 
-## Структура проекта
+## Project Structure
 
-- `index.html` — главная страница и демонстрация карточек.
-- `blog.html` — Grid Areas, гайд, carousel и карточки статей.
-- `about.html` — команда, таблица тарифов и форма.
-- `faq.html` — FAQ.
-- `styles.css` — собственные стили и CSS media queries.
-- `images/` — изображения проекта.
+- `index.html` — home page and card demonstrations.
+- `blog.html` — Grid Areas, guide, carousel, and article cards.
+- `about.html` — team, pricing table, and contact form.
+- `faq.html` — frequently asked questions.
+- `styles.css` — custom presentation and CSS media queries.
+- `images/` — project images.
+- `report-assets/` — screenshots used in the report.
 
-## Шаги проверки
+## Verification Steps
 
-1. Открыть `index.html` через локальный сервер.
-2. Проверить ширины 375 px, 768 px и 1440 px.
-3. Убедиться, что ряд CSS-карточек меняется между 1, 2 и 3 колонками.
-4. Открыть и закрыть мобильное меню Bootstrap.
-5. Переключить все девять слайдов carousel.
-6. Проверить Bootstrap-карточки и состояния кнопок.
-7. Заполнить форму с клавиатуры и проверить обязательные поля.
-8. Перейти по всем четырём страницам и проверить footer с именами участников.
+1. Open `index.html` through a local web server.
+2. Test the layout at 375 px, 768 px, and 1440 px.
+3. Confirm that the CSS card row changes between one, two, and three columns.
+4. Open and close the Bootstrap mobile navigation.
+5. Navigate through all nine carousel slides.
+6. Check the Bootstrap cards and button states.
+7. Complete the form with a keyboard and verify the required fields.
+8. Visit all four pages and confirm that both team members are listed in every footer.
 
-## Скриншоты
+## Screenshots
 
-Подготовлены локальные скриншоты для отчёта:
+The following screenshots were prepared for the report:
 
-- [Главная страница — desktop](report-assets/home-desktop.png)
-- [Главная страница — mobile](report-assets/home-mobile.png)
+- [Home page — desktop](report-assets/home-desktop.png)
+- [Home page — mobile](report-assets/home-mobile.png)
 - [Blog — Bootstrap carousel](report-assets/blog-carousel.png)
-- [About — Bootstrap grid и форма](report-assets/about-form.png)
+- [About — Bootstrap Grid and form](report-assets/about-form.png)
 
-В итоговом DOCX они показывают результат в браузере. Для устной защиты можно дополнительно открыть соответствующие фрагменты HTML и CSS в редакторе.
+The generated DOCX includes these browser results. During the presentation, the related HTML and CSS sections can also be opened in the code editor.
 
-## Результат
+## Result
 
-Проект соответствует техническим пунктам Assignment 3: он адаптивен, содержит требуемые CSS- и Bootstrap-решения, четыре связанные страницы и базовые средства доступности. Перед отправкой требуется заменить два маркера в начале отчёта на номер группы и публичный URL.
+The project meets the technical requirements of Front End Assignment 3. It is responsive, includes the required CSS and Bootstrap solutions, provides four connected pages, and implements basic accessibility. Before submission, replace the two placeholders at the beginning of this report with the group number and public deployment URL.

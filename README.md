@@ -1,28 +1,36 @@
 # GlowUp
 
-GlowUp — адаптивный многостраничный сайт о полезных привычках. Проект выполнен для Front End Assignment 3 с использованием HTML5, CSS3 и Bootstrap 5.3.8.
+GlowUp is a responsive multi-page website about building healthy habits. It was created for Front End Assignment 3 with HTML5, CSS3, and Bootstrap 5.3.8.
 
-## Страницы
+## Pages
 
-- `index.html` — главная страница, CSS-карточки и Bootstrap-карточки.
-- `blog.html` — CSS Grid Areas, статьи и Bootstrap-карусель из 9 изображений.
-- `about.html` — Bootstrap-сетка, таблица и адаптивная форма.
-- `faq.html` — часто задаваемые вопросы.
+- `index.html` — home page, responsive CSS cards, and Bootstrap cards.
+- `blog.html` — CSS Grid Areas, articles, and a Bootstrap carousel with nine images.
+- `about.html` — Bootstrap grid, pricing table, team section, and responsive contact form.
+- `faq.html` — frequently asked questions.
 
-## Локальный запуск
+## Run locally
 
-Откройте `index.html` в браузере или запустите локальный сервер:
+Open `index.html` directly in a browser or start a local server:
 
 ```bash
 python -m http.server 8000
 ```
 
-После этого откройте `http://localhost:8000`.
+Then open `http://localhost:8000`.
 
-## Проверка адаптивности
+## Test responsiveness
 
-Проверьте ширины 375 px, 768 px и 1440 px в DevTools. Отдельный ряд CSS-карточек показывает 1, 2 и 3 колонки соответственно. Bootstrap-компоненты перестраиваются по классам `col-sm-*`, `col-md-*` и `col-lg-*`.
+Use browser DevTools to test the website at 375 px, 768 px, and 1440 px. The independent CSS card row displays one, two, and three columns at the corresponding breakpoints. Bootstrap components adapt through `col-sm-*`, `col-md-*`, and `col-lg-*` classes.
 
-## Публикация
+## Project report
 
-Перед сдачей опубликуйте ветку `main` через GitHub Pages или Netlify и добавьте публичный URL в `REPORT.md` и `REPORT.docx`.
+The completed report is available in `REPORT.docx`. Its editable sources are `REPORT.md` and `REPORT.html`. Run the following command in PowerShell to rebuild the Word document after editing `REPORT.html`:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-report.ps1
+```
+
+## Deployment
+
+Before submission, publish the `main` branch with GitHub Pages or Netlify. Add the public URL and the group number to `REPORT.md`, `REPORT.html`, and the generated `REPORT.docx`.
