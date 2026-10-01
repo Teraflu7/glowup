@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Front End Assignment 3 — GlowUp</title>
+  <style>
+    @page { size: A4; margin: 2cm; }
+    body { font-family: Arial, sans-serif; color: #221720; line-height: 1.45; }
+    h1 { color: #a32b62; font-size: 28pt; margin-top: 90px; text-align: center; }
+    h2 { color: #a32b62; border-bottom: 1px solid #ffd6ea; padding-bottom: 5px; }
+    h3 { color: #7f4c88; }
+    .cover { text-align: center; page-break-after: always; }
+    .meta { margin: 40px auto; width: 80%; border-collapse: collapse; text-align: left; }
+    .meta td { border: 1px solid #d9c5cf; padding: 9px; }
+    .placeholder { background: #fff2f8; color: #8a234f; font-weight: bold; }
+    .task { page-break-inside: avoid; }
+    code, pre { font-family: Consolas, monospace; background: #f7f2f5; }
+    pre { border: 1px solid #e6d7df; padding: 12px; white-space: pre-wrap; }
+    img { display: block; max-width: 100%; max-height: 630px; margin: 12px auto 28px; border: 1px solid #e6d7df; }
+    .page-break { page-break-before: always; }
+    .caption { text-align: center; color: #675764; font-style: italic; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <h1>Front End Assignment 3</h1>
+    <h2>GlowUp — адаптивный сайт о полезных привычках</h2>
+    <table class="meta">
+      <tr><td><strong>Участники</strong></td><td>Мукиева Тамирис<br>Абдубек Алина</td></tr>
+      <tr><td><strong>Группа</strong></td><td class="placeholder">УКАЖИТЕ НОМЕР ГРУППЫ</td></tr>
+      <tr><td><strong>Публичный URL</strong></td><td class="placeholder">ДОБАВЬТЕ ССЫЛКУ ПОСЛЕ ПУБЛИКАЦИИ</td></tr>
+      <tr><td><strong>Технологии</strong></td><td>HTML5, CSS3, Bootstrap 5.3.8</td></tr>
+    </table>
+    <p>2026</p>
+  </section>
+
+  <h2>Цель и структура проекта</h2>
+  <p>Цель работы — адаптировать существующий многостраничный сайт с помощью CSS media queries и Bootstrap, применить обязательные компоненты и сохранить семантичную, доступную разметку.</p>
+  <p>Проект состоит из страниц Home, Blog, About и FAQ. Все страницы связаны адаптивной Bootstrap Navbar и содержат footer с именами участников.</p>
+
+  <div class="task"><h3>1. Адаптивная типографика</h3><p>В CSS созданы отдельные диапазоны desktop, tablet и mobile. Размеры заголовков и вводного текста меняются без Bootstrap.</p></div>
+  <div class="task"><h3>2. Адаптивный ряд CSS-карточек</h3><p>Три карточки на главной странице выводятся в 3, 2 и 1 колонку на desktop, tablet и mobile.</p>
+  <pre>.cards-container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 601px) and (max-width: 900px) {
+  .cards-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .cards-container { grid-template-columns: 1fr; }
+}</pre></div>
+  <div class="task"><h3>3. Bootstrap Grid</h3><p>Для трёх колонок применены <code>col-12 col-sm-6 col-md-6 col-lg-4</code>, для двух — <code>col-12 col-sm-12 col-md-6 col-lg-6</code>.</p></div>
+  <div class="task"><h3>4. Bootstrap spacing utilities</h3><p>Видимые отступы задаются классами <code>m-*</code>, <code>p-*</code>, <code>px-sm-2</code>, <code>mt-lg-4</code>, <code>px-lg-5</code> и <code>p-md-4</code>. Собственные margin/padding удалены из styles.css.</p></div>
+  <div class="task"><h3>5. Bootstrap Navbar</h3><p>На каждой странице есть <code>navbar navbar-expand-lg</code> с четырьмя ссылками и мобильной кнопкой раскрытия.</p></div>
+  <div class="task"><h3>6. Bootstrap Buttons</h3><p>Использованы <code>btn-primary</code>, <code>btn-outline-primary</code>, <code>btn-lg</code>, <code>btn-sm</code> и <code>btn-group</code>. Собственная кнопка карточек заменена.</p></div>
+  <div class="task"><h3>7. Bootstrap Carousel</h3><p>Blog содержит carousel из 9 изображений с индикаторами, подписями и кнопками управления.</p></div>
+  <div class="task"><h3>8. Bootstrap Cards</h3><p>Три карточки преимуществ находятся на Home; три карточки статей объединены в <code>card-group</code> на Blog.</p></div>
+  <div class="task"><h3>9. Responsive Form Controls</h3><p>Форма About использует Bootstrap Grid, <code>form-control</code>, <code>form-select</code>, <code>form-check-input</code> и <code>input-group</code>.</p></div>
+  <div class="task"><h3>10. Семантика и доступность</h3><p>Использованы семантические элементы, связанные label, alt, aria-атрибуты, skip-link, заметный keyboard focus и prefers-reduced-motion.</p></div>
+
+  <h2>Распределение работы</h2>
+  <ul>
+    <li><strong>Мукиева Тамирис:</strong> задания 1–5.</li>
+    <li><strong>Абдубек Алина:</strong> задания 6–10.</li>
+  </ul>
+
+  <h2 class="page-break">Результаты в браузере</h2>
+  <p class="caption">Главная страница — desktop</p>
+  <img src="report-assets/home-desktop.png" alt="Главная страница на desktop">
+  <p class="caption">Главная страница — mobile</p>
+  <img src="report-assets/home-mobile.png" alt="Главная страница на mobile">
+  <p class="caption">Blog — Bootstrap carousel и карточки</p>
+  <img src="report-assets/blog-carousel.png" alt="Страница Blog">
+  <p class="caption">About — Bootstrap Grid и адаптивная форма</p>
+  <img src="report-assets/about-form.png" alt="Страница About">
+
+  <h2>Проверка</h2>
+  <ol>
+    <li>Проверены ширины 375 px, 768 px и 1440 px.</li>
+    <li>Проверено перестроение CSS-карточек в 1, 2 и 3 колонки.</li>
+    <li>Проверены мобильная Navbar, carousel, Bootstrap cards и form controls.</li>
+    <li>Проверены парность структурных HTML-тегов, alt-тексты, label и aria-атрибуты.</li>
+  </ol>
+  <p><strong>Перед сдачей:</strong> заполнить номер группы и публичный URL на титульной странице после публикации проекта.</p>
+</body>
+</html>

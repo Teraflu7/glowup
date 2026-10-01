@@ -1,65 +1,101 @@
-# GlowUp — Project Report
+# Front End Assignment 3 — GlowUp
 
-## Project Overview
+## Данные проекта
 
-GlowUp is a multi-page website created to help users build healthy habits, improve motivation and organize daily routines.
+- **Проект:** GlowUp — сайт для формирования полезных привычек
+- **Участники:** Мукиева Тамирис; Абдубек Алина
+- **Группа:** `[УКАЖИТЕ НОМЕР ГРУППЫ]`
+- **Публичный URL:** `[ДОБАВЬТЕ ССЫЛКУ ПОСЛЕ ПУБЛИКАЦИИ]`
+- **Технологии:** HTML5, CSS3, Bootstrap 5.3.8
 
-The project was developed using **HTML5 and CSS3**.
+## Цель
 
-## Website Pages
+Цель работы — сделать существующий многостраничный сайт адаптивным с помощью CSS media queries и Bootstrap, применить компоненты Bootstrap, сохранить семантичную структуру и обеспечить базовую доступность.
 
-The website contains four main pages:
+## Выполненные задания
 
-* `index.html` — Home page
-* `blog.html` — Blog and useful tips
-* `about.html` — Team, pricing and contact form
-* `faq.html` — Frequently Asked Questions
+### 1. Адаптивная типографика
 
-## Flexbox
+В `styles.css` добавлены отдельные media queries для desktop, tablet и mobile. В них изменяются размеры главного заголовка, заголовков секций и вводного текста. Это решение не зависит от Bootstrap.
 
-Flexbox was used for the navigation bar and cards.
+### 2. Адаптивный ряд CSS-карточек
 
-For example:
+На главной странице секция `.cards-container` содержит три карточки. Через CSS media queries она отображает:
 
-```css
-display: flex;
-justify-content: space-between;
-align-items: center;
-```
+- 3 карточки в строку на desktop;
+- 2 карточки в строку на tablet;
+- 1 карточку в строку на mobile.
 
-It helps align elements and makes the layout more flexible.
+Для этого ряда Bootstrap Grid не используется.
 
-## CSS Grid
+### 3. Bootstrap Grid
 
-CSS Grid was used on the Blog page and in the image gallery.
+На главной странице блок преимуществ построен с `container`, `row`, `col-12`, `col-sm-6`, `col-md-6`, `col-lg-4`. На странице About блок команды использует `col-12`, `col-sm-12`, `col-md-6`, `col-lg-6`. Так выполнены варианты из трёх и двух колонок.
 
-```css
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-```
+### 4. Bootstrap spacing utilities
 
-The Blog page also uses Grid Areas for the header, sidebar, main content and footer.
+Видимые отступы перенесены из пользовательского CSS в Bootstrap-классы: `m-*`, `p-*`, `mt-*`, `mb-*`, `px-*`, `py-*`, `mx-auto`. Использованы адаптивные варианты `px-sm-2`, `mt-lg-4`, `px-lg-5`, `p-md-4`.
 
-## Responsive Design
+### 5. Bootstrap Navbar
 
-Media queries were used to make the website work correctly on desktop, tablet and mobile screens.
+На всех четырёх страницах используется адаптивный `navbar navbar-expand-lg` с четырьмя ссылками: Home, Blog, About и FAQ. На узком экране меню сворачивается и открывается кнопкой `navbar-toggler`.
 
-On smaller screens, multiple columns change into one column.
+### 6. Bootstrap Buttons
 
-## Other Elements
+Все видимые кнопки и ссылки-действия оформлены классами Bootstrap: `btn-primary`, `btn-outline-primary`, `btn-lg`, `btn-sm`. На главной странице две основные кнопки объединены в `btn-group`.
 
-The website also contains:
+### 7. Bootstrap Carousel
 
-* Navigation menu
-* Cards
-* Image gallery
-* Pricing table
-* Contact form
-* FAQ section
-* Hover effects and animations
+На странице Blog добавлена Bootstrap-карусель с девятью изображениями. Реализованы девять индикаторов, кнопки перехода назад и вперёд, подписи и альтернативный текст изображений.
 
-## Conclusion
+### 8. Bootstrap Cards
 
-During this project, we practiced HTML, CSS, Flexbox, CSS Grid and responsive web design.
+На главной странице есть три Bootstrap-карточки с изображением, заголовком, текстом и кнопкой. На странице Blog три карточки статей объединены классом `card-group`.
 
-The final result is a responsive multi-page website with a modern and simple interface.
+### 9. Responsive Form Controls
+
+На странице About форма использует `form-control`, `form-select`, `form-check-input`, `input-group`, `row`, `col-sm-4`, `col-sm-8`, `col-md-*` и `col-lg-*`. Для полей настроены подписи, обязательность заполнения и подсказки.
+
+### 10. Семантика и доступность
+
+Страницы используют `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, связанные `label`, информативные `alt` и `aria-*`. Добавлена ссылка перехода к основному содержимому, заметный `:focus-visible` и поддержка `prefers-reduced-motion`. Цвета интерактивных элементов затемнены для читаемого контраста.
+
+## Распределение работы
+
+- **Мукиева Тамирис:** задания 1–5 — media queries, CSS-карточки, Bootstrap Grid, spacing utilities и navbar.
+- **Абдубек Алина:** задания 6–10 — кнопки, carousel, Bootstrap cards, форма и доступность.
+
+## Структура проекта
+
+- `index.html` — главная страница и демонстрация карточек.
+- `blog.html` — Grid Areas, гайд, carousel и карточки статей.
+- `about.html` — команда, таблица тарифов и форма.
+- `faq.html` — FAQ.
+- `styles.css` — собственные стили и CSS media queries.
+- `images/` — изображения проекта.
+
+## Шаги проверки
+
+1. Открыть `index.html` через локальный сервер.
+2. Проверить ширины 375 px, 768 px и 1440 px.
+3. Убедиться, что ряд CSS-карточек меняется между 1, 2 и 3 колонками.
+4. Открыть и закрыть мобильное меню Bootstrap.
+5. Переключить все девять слайдов carousel.
+6. Проверить Bootstrap-карточки и состояния кнопок.
+7. Заполнить форму с клавиатуры и проверить обязательные поля.
+8. Перейти по всем четырём страницам и проверить footer с именами участников.
+
+## Скриншоты
+
+Подготовлены локальные скриншоты для отчёта:
+
+- [Главная страница — desktop](report-assets/home-desktop.png)
+- [Главная страница — mobile](report-assets/home-mobile.png)
+- [Blog — Bootstrap carousel](report-assets/blog-carousel.png)
+- [About — Bootstrap grid и форма](report-assets/about-form.png)
+
+В итоговом DOCX они показывают результат в браузере. Для устной защиты можно дополнительно открыть соответствующие фрагменты HTML и CSS в редакторе.
+
+## Результат
+
+Проект соответствует техническим пунктам Assignment 3: он адаптивен, содержит требуемые CSS- и Bootstrap-решения, четыре связанные страницы и базовые средства доступности. Перед отправкой требуется заменить два маркера в начале отчёта на номер группы и публичный URL.
