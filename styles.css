@@ -1143,3 +1143,26 @@ button {
   .section-heading h2, .section-title, .layout-main > h1 { font-size: 2rem; }
   .lead { font-size: 0.95rem; }
 }
+
+/* Assignment 3, Part 2: let Bootstrap rows and navbar control their layout. */
+.feature-grid.row,
+.team-grid.row {
+  display: flex;
+  grid-template-columns: none;
+  gap: 0;
+  max-width: none;
+}
+
+.site-header .navbar-nav {
+  gap: 0.5rem;
+}
+
+.site-header .nav-link {
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link:focus-visible {
+  color: var(--pink-700);
+}
