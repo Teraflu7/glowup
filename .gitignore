@@ -1,0 +1,8 @@
+# Local QA and generated submission artifacts
+/tmp/
+/output/
+
+# Editor and operating-system metadata
+.idea/
+.DS_Store
+
