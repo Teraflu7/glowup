@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/faq-accordion.css">
+  <script src="js/faq.js" defer></script>
 </head>
 <body>
   <a class="skip-link px-3 py-2" href="#main-content">Перейти к содержимому</a>
@@ -41,25 +43,61 @@
         </div>
       </section>
 
-      <section class="faq-list mx-auto mb-5">
-        <article class="faq-item p-4">
-          <h3>Как сервис помогает не бросать привычки?</h3>
-          <p>Мы используем методику микро-шагов и трекинг без чувства вины: если вы пропустили день, система плавно возвращает фокус без штрафов и давления.</p>
+      <section class="faq-list mx-auto mb-5" aria-label="Ответы на частые вопросы">
+        <article class="faq-item">
+          <h3 class="faq-question">
+            <button class="faq-trigger" id="faq-question-1" type="button" aria-expanded="false" aria-controls="faq-answer-1">
+              <span>Как сервис помогает не бросать привычки?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" hidden>
+            <div class="faq-panel-inner">
+              <p>Мы используем методику микро-шагов и трекинг без чувства вины: если вы пропустили день, система плавно возвращает фокус без штрафов и давления.</p>
+            </div>
+          </div>
         </article>
 
-        <article class="faq-item p-4">
-          <h3>Можно ли использовать GlowUp бесплатно?</h3>
-          <p>Да, базовый бесплатный тариф позволяет отслеживать до 3 привычек одновременно и просматривать еженедельную статистику без ограничений по времени.</p>
+        <article class="faq-item">
+          <h3 class="faq-question">
+            <button class="faq-trigger" id="faq-question-2" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+              <span>Можно ли использовать GlowUp бесплатно?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-panel" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" hidden>
+            <div class="faq-panel-inner">
+              <p>Да, базовый бесплатный тариф позволяет отслеживать до 3 привычек одновременно и просматривать еженедельную статистику без ограничений по времени.</p>
+            </div>
+          </div>
         </article>
 
-        <article class="faq-item p-4">
-          <h3>Работает ли сервис на смартфонах?</h3>
-          <p>Интерфейс полностью адаптирован под мобильные экраны и планшеты через браузер без необходимости устанавливать тяжелые приложения.</p>
+        <article class="faq-item">
+          <h3 class="faq-question">
+            <button class="faq-trigger" id="faq-question-3" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+              <span>Работает ли сервис на смартфонах?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-panel" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" hidden>
+            <div class="faq-panel-inner">
+              <p>Интерфейс полностью адаптирован под мобильные экраны и планшеты через браузер без необходимости устанавливать тяжелые приложения.</p>
+            </div>
+          </div>
         </article>
 
-        <article class="faq-item p-4">
-          <h3>Как связаться с поддержкой при возникновении вопросов?</h3>
-          <p>Вы можете заполнить форму на странице «О нас» или написать напрямую через форму связи в личном кабинете.</p>
+        <article class="faq-item">
+          <h3 class="faq-question">
+            <button class="faq-trigger" id="faq-question-4" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+              <span>Как связаться с поддержкой при возникновении вопросов?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-panel" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" hidden>
+            <div class="faq-panel-inner">
+              <p>Вы можете заполнить форму на странице «О нас» или написать напрямую через форму связи в личном кабинете.</p>
+            </div>
+          </div>
         </article>
       </section>
     </main>
