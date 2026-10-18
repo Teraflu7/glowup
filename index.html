@@ -16,6 +16,8 @@
     />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/home-interactions.css" />
+    <script src="js/home.js" defer></script>
   </head>
   <body>
     <a class="skip-link px-3 py-2" href="#main-content">Перейти к содержимому</a>
@@ -98,6 +100,38 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-tools container pb-4 px-sm-2" aria-labelledby="home-tools-title">
+          <div class="home-tools-card p-4 p-lg-5">
+            <div class="home-tools-copy">
+              <p class="eyebrow mb-2">Настрой свой GlowUp</p>
+              <h2 id="home-tools-title" class="mb-2">Цвет и время для нового старта</h2>
+              <p class="home-tools-description mb-0">
+                Выбери настроение страницы и следи за текущей датой и временем.
+              </p>
+            </div>
+
+            <div class="theme-controls" aria-labelledby="theme-controls-title">
+              <h3 id="theme-controls-title" class="home-tools-label">Фон страницы</h3>
+              <div class="theme-buttons" role="group" aria-label="Настройка цвета фона">
+                <button class="btn btn-primary" id="theme-cycle" type="button">
+                  Сменить цвет
+                </button>
+                <button class="btn btn-outline-primary" id="theme-reset" type="button" disabled>
+                  Сбросить
+                </button>
+              </div>
+              <p class="theme-status mb-0" id="theme-status" aria-live="polite">
+                Текущий фон: нежно-розовый
+              </p>
+            </div>
+
+            <div class="clock-card" aria-labelledby="clock-title">
+              <h3 id="clock-title" class="home-tools-label">Сейчас</h3>
+              <time id="current-date-time" datetime="">Загрузка даты и времени…</time>
             </div>
           </div>
         </section>
