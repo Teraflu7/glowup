@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/signup-dialog.css">
+  <script src="js/signup.js" defer></script>
 </head>
 <body>
   <a class="skip-link px-3 py-2" href="#main-content">Перейти к содержимому</a>
@@ -102,55 +104,90 @@
       </section>
 
       <section class="form-section pt-5 mt-lg-4 px-sm-2" id="contact">
-        <div class="section-heading mb-4">
+        <div class="section-heading mb-4 signup-invitation">
           <p class="eyebrow mb-3">Обратная связь</p>
           <h2 id="contact-title">Начните свой путь</h2>
+          <p class="signup-invitation__text">Расскажите, какую привычку хотите развить, и мы поможем выбрать подходящий план.</p>
+          <button class="btn btn-primary btn-lg signup-open-button" type="button" id="open-signup-dialog" aria-haspopup="dialog" aria-controls="signup-dialog">
+            Открыть форму регистрации
+          </button>
         </div>
-        <form id="contact-form" class="glow-form mx-auto p-3 p-md-4" aria-labelledby="contact-title">
-          <div class="row g-3">
-            <div class="col-12 col-md-6">
-              <label class="form-label" for="name">Ваше имя</label>
-              <input class="form-control" type="text" id="name" name="name" autocomplete="name" placeholder="Алина" required>
-            </div>
-            <div class="col-12 col-md-6">
-              <label class="form-label" for="email">Электронная почта</label>
-              <div class="input-group">
-                <span class="input-group-text" aria-hidden="true">@</span>
-                <input class="form-control" type="email" id="email" name="email" autocomplete="email" placeholder="example@mail.com" required>
+
+        <dialog class="signup-dialog" id="signup-dialog" aria-labelledby="signup-dialog-title" aria-describedby="signup-dialog-description">
+          <div class="signup-dialog__content">
+            <div class="signup-dialog__header">
+              <div>
+                <p class="eyebrow mb-2">Регистрация в GlowUp</p>
+                <h2 id="signup-dialog-title">Создайте свой план привычек</h2>
               </div>
+              <button class="signup-dialog__close" type="button" id="close-signup-dialog" aria-label="Закрыть форму регистрации">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="col-12">
-              <label class="form-label" for="plan-select">Интересующий план</label>
-              <select class="form-select" id="plan-select" name="plan">
-                <option value="free">Бесплатный — Старт</option>
-                <option value="standard">Стандартный — Оптимальный</option>
-                <option value="pro">Про — Максимум</option>
-              </select>
-            </div>
-            <fieldset class="col-12">
-              <legend class="col-form-label pt-0 fw-semibold">Главная цель</legend>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="goal" id="goal-habit" value="habit" checked>
-                <label class="form-check-label" for="goal-habit">Сформировать привычку</label>
+            <p class="signup-dialog__description" id="signup-dialog-description">Поля со звёздочкой обязательны. После отправки данные проверяются прямо в браузере.</p>
+
+            <form id="contact-form" class="glow-form" aria-labelledby="signup-dialog-title" novalidate>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 signup-field">
+                  <label class="form-label" for="name">Ваше имя <span aria-hidden="true">*</span></label>
+                  <input class="form-control" type="text" id="name" name="name" autocomplete="name" placeholder="Алина" required data-validate="name" aria-describedby="name-error">
+                  <span class="signup-error" id="name-error" role="alert" hidden></span>
+                </div>
+                <div class="col-12 col-md-6 signup-field">
+                  <label class="form-label" for="email">Электронная почта <span aria-hidden="true">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text" aria-hidden="true">@</span>
+                    <input class="form-control" type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="example@mail.com" required data-validate="email" aria-describedby="email-error">
+                  </div>
+                  <span class="signup-error" id="email-error" role="alert" hidden></span>
+                </div>
+                <div class="col-12 col-md-6 signup-field">
+                  <label class="form-label" for="password">Пароль <span aria-hidden="true">*</span></label>
+                  <input class="form-control" type="password" id="password" name="password" autocomplete="new-password" minlength="8" required data-validate="password" aria-describedby="password-hint password-error">
+                  <span class="signup-hint" id="password-hint">Не менее 8 символов.</span>
+                  <span class="signup-error" id="password-error" role="alert" hidden></span>
+                </div>
+                <div class="col-12 col-md-6 signup-field">
+                  <label class="form-label" for="password-confirmation">Повторите пароль <span aria-hidden="true">*</span></label>
+                  <input class="form-control" type="password" id="password-confirmation" name="passwordConfirmation" autocomplete="new-password" minlength="8" required data-validate="passwordConfirmation" aria-describedby="password-confirmation-error">
+                  <span class="signup-error" id="password-confirmation-error" role="alert" hidden></span>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="plan-select">Интересующий план</label>
+                  <select class="form-select" id="plan-select" name="plan">
+                    <option value="free">Бесплатный — Старт</option>
+                    <option value="standard">Стандартный — Оптимальный</option>
+                    <option value="pro">Про — Максимум</option>
+                  </select>
+                </div>
+                <fieldset class="col-12">
+                  <legend class="col-form-label pt-0 fw-semibold">Главная цель</legend>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="goal" id="goal-habit" value="habit" checked>
+                    <label class="form-check-label" for="goal-habit">Сформировать привычку</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="goal" id="goal-motivation" value="motivation">
+                    <label class="form-check-label" for="goal-motivation">Поддерживать мотивацию</label>
+                  </div>
+                </fieldset>
+                <div class="col-12 signup-field">
+                  <label class="form-label" for="message">Цель или пожелание <span aria-hidden="true">*</span></label>
+                  <textarea class="form-control" id="message" name="message" rows="3" placeholder="Хочу сформировать утреннюю рутину..." required data-validate="message" aria-describedby="message-error"></textarea>
+                  <span class="signup-error" id="message-error" role="alert" hidden></span>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="tips" name="tips" value="yes">
+                    <label class="form-check-label" for="tips">Интересуют советы по привычкам</label>
+                  </div>
+                </div>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="goal" id="goal-motivation" value="motivation">
-                <label class="form-check-label" for="goal-motivation">Поддерживать мотивацию</label>
-              </div>
-            </fieldset>
-            <div class="col-12">
-              <label class="form-label" for="message">Цель или пожелание</label>
-              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Хочу сформировать утреннюю рутину..." required></textarea>
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="tips" name="tips" value="yes">
-                <label class="form-check-label" for="tips">Интересуют советы по привычкам</label>
-              </div>
-            </div>
+              <p class="signup-success" id="signup-success" role="status" aria-live="polite" tabindex="-1" hidden></p>
+              <button type="submit" class="btn btn-primary btn-lg w-100">Создать план</button>
+            </form>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Отправить заявку</button>
-        </form>
+        </dialog>
       </section>
     </main>
 
