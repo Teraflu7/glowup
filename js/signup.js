@@ -122,8 +122,6 @@
   dialog.addEventListener("close", restoreFocus);
 
   validatedFields.forEach((field) => {
-    field.addEventListener("blur", () => validateField(field));
-
     field.addEventListener("input", () => {
       hideSuccessMessage();
 
