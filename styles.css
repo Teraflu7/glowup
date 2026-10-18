@@ -892,7 +892,6 @@ button {
 
 }
 
-/* Assignment 3, Part 1: CSS media queries (no Bootstrap). */
 /* Desktop: three cards in one row. */
 .cards-container {
   display: grid;
