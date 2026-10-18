@@ -1,102 +1,152 @@
-# Front End Assignment 3 — GlowUp
+# Front End Assignment 4 - GlowUp
 
 ## Project Information
 
-- **Project:** GlowUp — a website for building healthy habits
+- **Team name:** GlowUp
 - **Team members:** Tamiris Mukieva; Alina Abdubek
-- **Group:** `[ENTER GROUP NUMBER]`
-- **Public URL:** `[ADD THE DEPLOYED WEBSITE URL]`
-- **Technologies:** HTML5, CSS3, Bootstrap 5.3.8
+- **Group:** SE-2516
+- **Repository:** https://github.com/Teraflu7/glowup
+- **Public URL:** https://teraflu7.github.io/glowup/
+- **Technologies:** HTML5, CSS3, Bootstrap 5.3.8, and vanilla JavaScript
 
 ## Objective
 
-The objective was to make an existing multi-page website responsive with CSS media queries and Bootstrap, use the required Bootstrap components, preserve semantic HTML, and provide basic accessibility.
+The goal of Assignment 4 was to add interactive JavaScript features to the existing GlowUp website. The completed work includes custom form validation, an FAQ accordion, a popup contact form, a background color changer, and a dynamically updated date and time display. The updated website keeps the responsive layout and accessibility features created in the previous assignment.
 
 ## Completed Tasks
 
-### 1. Responsive Typography
+### 1. Form Validation
 
-`styles.css` contains separate media queries for desktop, tablet, and mobile screens. They adjust the main heading, section headings, and introductory text without relying on Bootstrap.
+The contact form in `about.html` is validated by `js/signup.js`. Native browser messages are disabled with `novalidate` so that the project can display consistent custom messages next to the relevant fields.
 
-### 2. Responsive CSS Card Row
+Implementation steps:
 
-The `.cards-container` section on the home page contains three cards. CSS media queries display:
+1. Added required name, email, password, password confirmation, and message fields to the form.
+2. Added an error container for each field so that the user can immediately identify the problem.
+3. Trimmed text values before checking them and verified that every required field contains data.
+4. Checked the email against a valid email pattern.
+5. Required the password to contain at least eight characters and required the confirmation to match it exactly.
+6. Set `aria-invalid` on invalid controls and moved keyboard focus to the first field that needs correction.
+7. Prevented submission when any check fails and displayed a success message only after all values are valid.
 
-- three cards per row on desktop screens;
-- two cards per row on tablet screens;
-- one card per row on mobile screens.
+The form was checked with empty values, an incorrectly formatted email, a short password, non-matching passwords, and a complete valid submission. Clear inline messages are shown for every invalid case.
 
-Bootstrap Grid is not used for this card row.
+### 2. FAQ Accordion
 
-### 3. Bootstrap Grid
+The four questions in `faq.html` were converted into an accessible accordion controlled by `js/faq.js` and styled by `css/faq-accordion.css`.
 
-The features section on the home page uses `container`, `row`, `col-12`, `col-sm-6`, `col-md-6`, and `col-lg-4`. The team section on the About page uses `col-12`, `col-sm-12`, `col-md-6`, and `col-lg-6`. These sections demonstrate both three-column and two-column layouts.
+Implementation steps:
 
-### 4. Bootstrap Spacing Utilities
+1. Changed every question heading into a native button.
+2. Connected each button to its answer with `aria-controls` and reported its state with `aria-expanded`.
+3. Hid all answer panels when JavaScript initializes.
+4. Added click handlers that reveal the selected answer with a smooth transition.
+5. Allowed a second click on the same question to hide its answer again.
+6. Closed the previously open answer when another question is selected.
 
-Visible spacing was moved from custom CSS to Bootstrap utility classes such as `m-*`, `p-*`, `mt-*`, `mb-*`, `px-*`, `py-*`, and `mx-auto`. Responsive utilities include `px-sm-2`, `mt-lg-4`, `px-lg-5`, and `p-md-4`.
+Because the questions are native buttons, the accordion also works with the keyboard. Existing reduced-motion styles continue to support users who request less animation.
 
-### 5. Bootstrap Navbar
+### 3. Popup Contact Form
 
-All four pages use a responsive `navbar navbar-expand-lg` with four links: Home, Blog, About, and FAQ. The navigation collapses behind a `navbar-toggler` button on narrow screens.
+The contact form in `about.html` was moved into a native HTML `<dialog>`. Its layout is defined in `css/signup-dialog.css`, while opening, closing, focus handling, and validation are managed by `js/signup.js`.
 
-### 6. Bootstrap Buttons
+Implementation steps:
 
-All visible action buttons and button-style links use Bootstrap classes, including `btn-primary`, `btn-outline-primary`, `btn-lg`, and `btn-sm`. The two main actions on the home page are combined in a `btn-group`.
+1. Kept the dialog closed when the page first loads.
+2. Added a visible call-to-action button that opens the popup.
+3. Added a clear close button inside the popup.
+4. Added support for closing the popup by selecting the backdrop or pressing Escape.
+5. Returned focus to the opening button when the popup closes.
+6. Kept the form responsive so that it remains usable on narrow and wide screens.
 
-### 7. Bootstrap Carousel
+The result is a visually clear popup that can be opened and closed with a mouse, touch input, or keyboard.
 
-The Blog page contains a Bootstrap carousel with nine images. It includes nine indicators, previous and next controls, captions, and descriptive alternative text.
+### 4. Background Color Changer
 
-### 8. Bootstrap Cards
+The home page contains a new "Настрой свой GlowUp" (Customize your GlowUp) interaction panel. `js/home.js` changes the existing `--bg` CSS custom property, and `css/home-interactions.css` styles the controls.
 
-The home page contains three Bootstrap cards with an image, title, text, and button. The Blog page contains three article cards combined with the `card-group` class.
+Implementation steps:
 
-### 9. Responsive Form Controls
+1. Added "Сменить цвет" (Change color) and "Сбросить" (Reset) buttons to `index.html`.
+2. Defined a controlled palette of soft colors that matches the original visual style.
+3. Made each click cycle through soft pink, warm peach, airy lavender, and fresh mint.
+4. Updated a live status message so that the current color is announced and visible.
+5. Made the reset button return the page to the first color in the palette.
 
-The About page form uses `form-control`, `form-select`, `form-check-input`, `input-group`, `row`, `col-sm-*`, `col-md-*`, and `col-lg-*`. The form includes labels, required fields, and supporting instructions.
+Changing the CSS custom property preserves the decorative background effects while visibly updating the page color.
 
-### 10. Semantics and Accessibility
+### 5. Current Date and Time
 
-The pages use `header`, `nav`, `main`, `section`, `article`, `aside`, and `footer`. Form labels are connected to their controls, images have meaningful `alt` text, and interactive elements use appropriate `aria-*` attributes. The project also includes a skip link, visible `:focus-visible` styles, and support for `prefers-reduced-motion`.
+The same home-page panel includes a semantic `<time>` element that displays the current date and time.
+
+Implementation steps:
+
+1. Created a new `Date` object when the page initializes.
+2. Formatted the value with `Intl.DateTimeFormat` so that the result is readable and localized.
+3. Wrote the formatted value into the visible `<time>` element.
+4. Updated the value every second with `setInterval`.
+5. Kept the element's machine-readable `datetime` value synchronized with the visible text.
+
+The clock updates without reloading the page and displays both the current date and the current time.
+
+## JavaScript and CSS Integration
+
+- `index.html` links `css/home-interactions.css` and `js/home.js` for the color controls and live clock.
+- `faq.html` links `css/faq-accordion.css` and `js/faq.js` for the FAQ accordion.
+- `about.html` links `css/signup-dialog.css` and `js/signup.js` for the popup and validation.
+- The existing `styles.css` remains responsible for the site's shared design and responsive layout.
+
+The JavaScript files are loaded with `defer` so that the page markup is available before event listeners are attached.
+
+## Accessibility
+
+The implementation uses native buttons and form controls, visible labels, inline error text, focus management, and ARIA state attributes. The popup can be closed with Escape, the accordion can be operated from the keyboard, and the background status is communicated as text instead of relying only on color. These choices make the interactions understandable for keyboard and assistive-technology users.
 
 ## Work Distribution
 
-- **Tamiris Mukieva:** Tasks 1–5 — media queries, CSS cards, Bootstrap Grid, spacing utilities, and navbar.
-- **Alina Abdubek:** Tasks 6–10 — buttons, carousel, Bootstrap cards, form, and accessibility.
+- **Tamiris Mukieva:** FAQ accordion, background color changer, live date and time, and related home/FAQ styles.
+- **Alina Abdubek:** popup contact form, custom validation, inline validation messages, and related dialog styles.
+- **Both members:** cross-browser testing, report preparation, screenshots, deployment, repository review, and defense preparation.
 
-## Project Structure
+Each member implemented multiple JavaScript components. The final integration review and test checklist cover the complete project so that both members can prepare to explain every required feature during the practice lesson.
 
-- `index.html` — home page and card demonstrations.
-- `blog.html` — Grid Areas, guide, carousel, and article cards.
-- `about.html` — team, pricing table, and contact form.
-- `faq.html` — frequently asked questions.
-- `styles.css` — custom presentation and CSS media queries.
-- `images/` — project images.
-- `report-assets/` — screenshots used in the report.
+## Testing and Verification
 
-## Verification Steps
+The following checks cover the functional requirements of the assignment:
 
-1. Open `index.html` through a local web server.
-2. Test the layout at 375 px, 768 px, and 1440 px.
-3. Confirm that the CSS card row changes between one, two, and three columns.
-4. Open and close the Bootstrap mobile navigation.
-5. Navigate through all nine carousel slides.
-6. Check the Bootstrap cards and button states.
-7. Complete the form with a keyboard and verify the required fields.
-8. Visit all four pages and confirm that both team members are listed in every footer.
+1. Open `about.html`, open the popup, and confirm that it closes with the close button, backdrop, and Escape key.
+2. Submit the form empty and confirm that required-field messages appear.
+3. Test an invalid email, a password shorter than eight characters, and a non-matching confirmation.
+4. Submit valid values and confirm that the success message appears.
+5. Open `faq.html` and confirm that all answers are hidden initially.
+6. Open and close every question, and confirm that selecting a new question closes the previous answer.
+7. Open `index.html`, cycle through all four background colors, and use the reset button.
+8. Confirm that the displayed date and time are readable and update once per second.
+9. Repeat the interaction tests with keyboard-only navigation.
+10. Test at 375 px, 768 px, and 1440 px in Chrome and one additional modern browser.
+11. Confirm that the browser console contains no JavaScript errors and that all local files load successfully.
 
-## Screenshots
+## Report Screenshots
 
-The following screenshots were prepared for the report:
+The final report includes one clear screenshot for every required task. The following files were captured from the completed website and saved in `report-assets/`:
 
-- [Home page — desktop](report-assets/home-desktop.png)
-- [Home page — mobile](report-assets/home-mobile.png)
-- [Blog — Bootstrap carousel](report-assets/blog-carousel.png)
-- [About — Bootstrap Grid and form](report-assets/about-form.png)
+- `assignment4-validation-errors.png` - popup form showing representative inline validation messages.
+- `assignment4-accordion-open.png` - FAQ page with one answer expanded and the others collapsed.
+- `assignment4-popup-open.png` - contact popup open above the About page.
+- `assignment4-background-color.png` - home page after switching to a different background color.
+- `assignment4-date-time.png` - live date and time block showing a readable current value.
+- `assignment4-mobile-view.png` - one interactive component demonstrated at a narrow mobile viewport.
 
-The generated DOCX includes these browser results. During the presentation, the related HTML and CSS sections can also be opened in the code editor.
+The screenshots show the current website without developer tools or unrelated windows covering the tested components.
+
+## Deployment
+
+The final `main` branch was pushed to the shared GitHub repository and deployed with GitHub Pages at https://teraflu7.github.io/glowup/. The deployment workflow completed successfully, and the published pages expose the same Assignment 4 JavaScript modules as the tested local version.
+
+## Final Reflection
+
+Assignment 4 transformed GlowUp from a mainly static responsive website into an interactive application. The team practiced selecting DOM elements, listening for user actions, changing CSS properties, managing accessible component state, validating user input, working with the `Date` object, and organizing JavaScript by page. The work also demonstrated the importance of keyboard access, clear feedback, responsive testing, and coordination in a shared repository.
 
 ## Result
 
-The project meets the technical requirements of Front End Assignment 3. It is responsive, includes the required CSS and Bootstrap solutions, provides four connected pages, and implements basic accessibility. Before submission, replace the two placeholders at the beginning of this report with the group number and public deployment URL.
+GlowUp implements all five required JavaScript features: form validation, an FAQ accordion, a popup form, background color controls, and a dynamic date and time display. The components are connected to the existing multi-page design, documented with screenshots, deployed on GitHub Pages, and ready for submission and defense.
