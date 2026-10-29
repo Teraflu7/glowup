@@ -127,7 +127,7 @@ function setupHomeFeatures() {
 
   function updateProgress() {
     const count = completed.length;
-    const percent = Math.round(count / habits.length * 100);
+    const percent = habitStats.calculateProgress(count);
 
     progressText.textContent =
       `${count} of ${habits.length} completed (${percent}%)`;
@@ -495,7 +495,7 @@ function setupBlogFeatures() {
     const extra = document.createElement("p");
     extra.className = "card-text";
     extra.textContent = extraTexts[index];
-    extra.hidden = true;
+    extra.style.display = "none";
 
     const button = document.createElement("button");
     button.type = "button";
@@ -506,17 +506,20 @@ function setupBlogFeatures() {
     cardBody.append(extra, button);
 
     button.addEventListener("click", () => {
-      extra.hidden = !extra.hidden;
+  const isHidden = extra.style.display === "none";
 
-      button.textContent = extra.hidden
-        ? "Read More"
-        : "Read Less";
+  extra.style.display = isHidden ? "block" : "none";
 
-      button.setAttribute(
-        "aria-expanded",
-        String(!extra.hidden)
-      );
-    });
+  button.textContent = isHidden
+    ? "Read Less"
+    : "Read More";
+
+  button.setAttribute(
+    "aria-expanded",
+    String(isHidden)
+  );
+});
+
   });
 }
 
