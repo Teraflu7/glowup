@@ -1052,3 +1052,88 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
   }
 }
+/* Assignment 5 additions */
+
+.assignment-feature {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+}
+
+.habit-row input {
+  accent-color: var(--pink-700);
+  width: 18px;
+  height: 18px;
+}
+
+.habit-row input:checked + span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.assignment-feature .progress {
+  height: 10px;
+  background: var(--pink-50);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.assignment-feature .progress-bar {
+  background: var(--pink-700);
+  transition: width 0.4s ease;
+}
+
+.motivation-animate {
+  animation: motivationFade 0.4s ease;
+}
+
+@keyframes motivationFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.article-body .btn {
+  margin-top: 12px;
+}
+
+.step-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.step-controls .btn {
+  flex: 1;
+}
+
+.step-summary {
+  padding: 16px 0;
+  color: var(--text);
+}
+
+/* Make hidden elements stay hidden with Bootstrap */
+[hidden] {
+  display: none !important;
+}
