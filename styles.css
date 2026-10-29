@@ -1123,7 +1123,6 @@ textarea:focus-visible {
   gap: 12px;
   margin-bottom: 16px;
 }
-
 .step-controls .btn {
   flex: 1;
 }
@@ -1133,7 +1132,6 @@ textarea:focus-visible {
   color: var(--text);
 }
 
-/* Make hidden elements stay hidden with Bootstrap */
 [hidden] {
   display: none !important;
 }
