@@ -208,120 +208,7 @@ function setupHomeFeatures() {
 }
 
 setupHomeFeatures();
-// Assignment 5: Blog Filters and Read More
 
-function setupBlogFeatures() {
-  const blogGrid = document.querySelector(".blog-grid");
-
-  if (!blogGrid) return;
-
-  const articles = Array.from(
-    blogGrid.querySelectorAll(".article-card")
-  );
-
-  const categories = [
-    { value: "all", label: "All" },
-    { value: "routine", label: "Рутина" },
-    { value: "mindfulness", label: "Осознанность" },
-    { value: "energy", label: "Энергия" }
-  ];
-
-  const filters = document.createElement("div");
-  filters.className = "blog-filter-controls";
-  filters.setAttribute("role", "group");
-  filters.setAttribute("aria-label", "Фильтр статей");
-
-  blogGrid.before(filters);
-
-  function filterArticles(category) {
-    let selectedTag;
-
-    switch (category) {
-      case "routine":
-        selectedTag = "Рутина";
-        break;
-      case "mindfulness":
-        selectedTag = "Осознанность";
-        break;
-      case "energy":
-        selectedTag = "Энергия";
-        break;
-      default:
-        selectedTag = null;
-    }
-
-    articles.forEach((article) => {
-      const tag = article.querySelector(".article-tag");
-      const show = !selectedTag ||
-        tag.textContent.trim() === selectedTag;
-
-      article.hidden = !show;
-    });
-  }
-
-  categories.forEach((category) => {
-    const button = document.createElement("button");
-
-    button.type = "button";
-    button.className = "btn btn-outline-primary";
-    button.textContent = category.label;
-    button.setAttribute("aria-pressed",
-      String(category.value === "all")
-    );
-
-    button.addEventListener("click", () => {
-      filterArticles(category.value);
-
-      filters.querySelectorAll("button").forEach((btn) => {
-        btn.setAttribute("aria-pressed", "false");
-      });
-
-      button.setAttribute("aria-pressed", "true");
-    });
-
-    filters.appendChild(button);
-  });
-
-  // Read More for existing articles
-
-  const extraTexts = [
-    "Начните утро без телефона. Выпейте воду, сделайте небольшую разминку и запишите главную цель на день.",
-    "Не пытайтесь изменить всё сразу. Выберите одну привычку и отмечайте даже самый маленький прогресс.",
-    "Держите бутылку воды рядом с собой и делайте небольшие перерывы в течение дня."
-  ];
-
-  articles.forEach((article, index) => {
-    const cardBody = article.querySelector(".article-body");
-
-    const extra = document.createElement("p");
-    extra.className = "card-text";
-    extra.textContent = extraTexts[index];
-    extra.hidden = true;
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "btn btn-outline-primary";
-    button.textContent = "Read More";
-    button.setAttribute("aria-expanded", "false");
-
-    cardBody.append(extra, button);
-
-    button.addEventListener("click", () => {
-      extra.hidden = !extra.hidden;
-
-      button.textContent = extra.hidden
-        ? "Read More"
-        : "Read Less";
-
-      button.setAttribute(
-        "aria-expanded",
-        String(!extra.hidden)
-      );
-    });
-  });
-}
-
-setupBlogFeatures();
 // Assignment 5: Multi-Step Form
 
 function setupMultiStepForm() {
@@ -499,3 +386,118 @@ function setupMultiStepForm() {
 }
 
 setupMultiStepForm();
+
+// Assignment 5: Blog Filters and Read More
+
+function setupBlogFeatures() {
+  const blogGrid = document.querySelector(".blog-grid");
+
+  if (!blogGrid) return;
+
+  const articles = Array.from(
+    blogGrid.querySelectorAll(".article-card")
+  );
+
+  const categories = [
+    { value: "all", label: "All" },
+    { value: "routine", label: "Рутина" },
+    { value: "mindfulness", label: "Осознанность" },
+    { value: "energy", label: "Энергия" }
+  ];
+
+  const filters = document.createElement("div");
+  filters.className = "blog-filter-controls";
+  filters.setAttribute("role", "group");
+  filters.setAttribute("aria-label", "Фильтр статей");
+
+  blogGrid.before(filters);
+
+  function filterArticles(category) {
+    let selectedTag;
+
+    switch (category) {
+      case "routine":
+        selectedTag = "Рутина";
+        break;
+      case "mindfulness":
+        selectedTag = "Осознанность";
+        break;
+      case "energy":
+        selectedTag = "Энергия";
+        break;
+      default:
+        selectedTag = null;
+    }
+
+    articles.forEach((article) => {
+      const tag = article.querySelector(".article-tag");
+      const show = !selectedTag ||
+        tag.textContent.trim() === selectedTag;
+
+      article.hidden = !show;
+    });
+  }
+
+  categories.forEach((category) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "btn btn-outline-primary";
+    button.textContent = category.label;
+    button.setAttribute("aria-pressed",
+      String(category.value === "all")
+    );
+
+    button.addEventListener("click", () => {
+      filterArticles(category.value);
+
+      filters.querySelectorAll("button").forEach((btn) => {
+        btn.setAttribute("aria-pressed", "false");
+      });
+
+      button.setAttribute("aria-pressed", "true");
+    });
+
+    filters.appendChild(button);
+  });
+
+  // Read More for existing articles
+
+  const extraTexts = [
+    "Начните утро без телефона. Выпейте воду, сделайте небольшую разминку и запишите главную цель на день.",
+    "Не пытайтесь изменить всё сразу. Выберите одну привычку и отмечайте даже самый маленький прогресс.",
+    "Держите бутылку воды рядом с собой и делайте небольшие перерывы в течение дня."
+  ];
+
+  articles.forEach((article, index) => {
+    const cardBody = article.querySelector(".article-body");
+
+    const extra = document.createElement("p");
+    extra.className = "card-text";
+    extra.textContent = extraTexts[index];
+    extra.hidden = true;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-outline-primary";
+    button.textContent = "Read More";
+    button.setAttribute("aria-expanded", "false");
+
+    cardBody.append(extra, button);
+
+    button.addEventListener("click", () => {
+      extra.hidden = !extra.hidden;
+
+      button.textContent = extra.hidden
+        ? "Read More"
+        : "Read Less";
+
+      button.setAttribute(
+        "aria-expanded",
+        String(!extra.hidden)
+      );
+    });
+  });
+}
+
+setupBlogFeatures();
