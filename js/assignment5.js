@@ -75,6 +75,16 @@ function setupHomeFeatures() {
     { id: "reading", name: "Read a book" },
     { id: "sleep", name: "Sleep on time" }
   ];
+  
+  const habitStats = {
+  total: habits.length,
+
+  calculateProgress(completedCount) {
+    return Math.round(
+      (completedCount / this.total) * 100
+    );
+  }
+};
 
   const today = new Date().toLocaleDateString("en-CA");
   const storageKey = "glowup-habits-" + today;
@@ -381,6 +391,16 @@ function setupMultiStepForm() {
       // and displays the success message.
     }
   });
+
+  form.addEventListener("submit", () => {
+  setTimeout(() => {
+    const success = document.querySelector("#signup-success");
+
+    if (success && !success.hidden) {
+      showStep(0);
+    }
+  }, 0);
+});
 
   showStep(0);
 }
