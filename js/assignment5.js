@@ -322,3 +322,180 @@ function setupBlogFeatures() {
 }
 
 setupBlogFeatures();
+// Assignment 5: Multi-Step Form
+
+function setupMultiStepForm() {
+  const form = document.querySelector("#contact-form");
+  const openButton =
+    document.querySelector("#open-signup-dialog");
+
+  if (!form || !openButton) return;
+
+  const rows = Array.from(
+    form.querySelector(".row").children
+  );
+
+  // Group existing form fields by steps
+  const stepFields = [
+    rows.slice(0, 4),
+    rows.slice(4)
+  ];
+
+  const submitButton = form.querySelector(
+    'button[type="submit"]'
+  );
+
+  const controls = document.createElement("div");
+  controls.className = "step-controls";
+
+  const backButton = document.createElement("button");
+  backButton.type = "button";
+  backButton.className = "btn btn-outline-primary";
+  backButton.textContent = "Back";
+
+  const nextButton = document.createElement("button");
+  nextButton.type = "button";
+  nextButton.className = "btn btn-primary";
+  nextButton.textContent = "Next";
+
+  controls.append(backButton, nextButton);
+  submitButton.before(controls);
+
+  const stepTitle = document.createElement("p");
+  stepTitle.className = "home-tools-label";
+  stepTitle.setAttribute("aria-live", "polite");
+  form.prepend(stepTitle);
+
+  const summary = document.createElement("div");
+  summary.className = "step-summary";
+  summary.hidden = true;
+  controls.before(summary);
+
+  let currentStep = 0;
+
+  function showStep(step) {
+    currentStep = step;
+
+    stepFields.forEach((group, index) => {
+      group.forEach((field) => {
+        field.hidden = index !== currentStep;
+      });
+    });
+
+    stepTitle.textContent = `Step ${step + 1} of 3`;
+
+    backButton.hidden = step === 0;
+    nextButton.hidden = step === 2;
+    submitButton.hidden = step !== 2;
+    summary.hidden = step !== 2;
+
+    if (step === 2) {
+      const name = form.querySelector("#name").value;
+      const email = form.querySelector("#email").value;
+      const plan = form.querySelector("#plan-select");
+
+      summary.replaceChildren();
+
+      const heading = document.createElement("h3");
+      heading.textContent = "Confirm your details";
+
+      const details = document.createElement("p");
+      details.textContent =
+        `Name: ${name} | Email: ${email} | Plan: ` +
+        plan.options[plan.selectedIndex].text;
+
+      summary.append(heading, details);
+    }
+  }
+
+  function validateStep(step) {
+    const fields = stepFields[step]
+      .flatMap(group =>
+        Array.from(group.querySelectorAll("[data-validate]"))
+      );
+
+    for (const field of fields) {
+      const errorElement =
+        document.getElementById(field.id + "-error");
+
+      let message = "";
+
+      if (!field.value.trim()) {
+        message = "Заполните это поле.";
+      } else if (
+        field.id === "email" &&
+        !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value)
+      ) {
+        message = "Введите корректный email.";
+      } else if (
+        field.id === "password" &&
+        field.value.length < 8
+      ) {
+        message = "Минимум 8 символов.";
+      } else if (
+        field.id === "password-confirmation" &&
+        field.value !== form.querySelector("#password").value
+      ) {
+        message = "Пароли не совпадают.";
+      }
+
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.hidden = !message;
+      }
+
+      field.setAttribute("aria-invalid", String(!!message));
+
+      if (message) {
+        field.focus();
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // Callback for moving between steps
+  function changeStep(nextStep, callback) {
+    showStep(nextStep);
+    if (typeof callback === "function") {
+      callback(nextStep);
+    }
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (!validateStep(currentStep)) return;
+
+    changeStep(currentStep + 1, () => {
+      stepTitle.focus();
+    });
+  });
+
+  backButton.addEventListener("click", () => {
+    changeStep(currentStep - 1);
+  });
+
+  stepTitle.tabIndex = -1;
+
+  openButton.addEventListener("click", () => {
+    showStep(0);
+  });
+
+  // Reset step after a successful submission
+  form.addEventListener("submit", () => {
+    const fields = Array.from(
+      form.querySelectorAll("[data-validate]")
+    );
+
+    if (fields.every(field =>
+      field.getAttribute("aria-invalid") !== "true"
+    )) {
+      // The original signup.js handles the actual reset
+      // and displays the success message.
+    }
+  });
+
+  showStep(0);
+}
+
+setupMultiStepForm();
