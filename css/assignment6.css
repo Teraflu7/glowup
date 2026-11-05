@@ -1,5 +1,4 @@
 .blog-search {
-  position: relative;
   max-width: 720px;
 }
 
@@ -17,6 +16,44 @@
 .blog-search .form-control:focus {
   border-color: var(--pink-500);
   box-shadow: 0 0 0 0.2rem rgba(255, 94, 168, 0.18);
+}
+
+.search-autocomplete {
+  position: relative;
+}
+
+.search-suggestions {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  left: 0;
+  max-height: 16rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.45rem;
+  list-style: none;
+  background: var(--card-strong);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--deep-shadow);
+}
+
+.search-suggestions[hidden] {
+  display: none;
+}
+
+.search-suggestion {
+  padding: 0.7rem 0.85rem;
+  border-radius: 9px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.search-suggestion:hover,
+.search-suggestion[aria-selected="true"] {
+  background: var(--pink-50);
+  color: var(--pink-700);
 }
 
 .search-status {

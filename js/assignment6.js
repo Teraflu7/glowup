@@ -10,8 +10,16 @@
     const $input = $("#article-search");
     const $cards = $(".blog-grid .article-card");
     const $status = $("#article-search-status");
+    const $suggestions = $("#article-search-suggestions");
 
-    if (!$input.length || !$cards.length || !$status.length) return;
+    if (
+      !$input.length ||
+      !$cards.length ||
+      !$status.length ||
+      !$suggestions.length
+    ) return;
+
+    let activeSuggestion = -1;
 
     function updateResults() {
       const query = $input.val().trim().toLocaleLowerCase("ru-RU");
@@ -47,7 +55,122 @@
       );
     }
 
-    $input.on("input search", updateResults);
+    function hideSuggestions() {
+      activeSuggestion = -1;
+      $suggestions.prop("hidden", true).empty();
+      $input.attr("aria-expanded", "false").removeAttr("aria-activedescendant");
+    }
+
+    function updateActiveSuggestion() {
+      const $options = $suggestions.find("[role='option']");
+
+      $options.attr("aria-selected", "false");
+      if (activeSuggestion < 0 || activeSuggestion >= $options.length) {
+        $input.removeAttr("aria-activedescendant");
+        return;
+      }
+
+      const $activeOption = $options.eq(activeSuggestion);
+      $activeOption.attr("aria-selected", "true");
+      $input.attr("aria-activedescendant", $activeOption.attr("id"));
+    }
+
+    function renderSuggestions() {
+      const query = $input.val().trim().toLocaleLowerCase("ru-RU");
+      const selectedCategory = $(".blog-filter-controls button[aria-pressed='true']")
+        .text()
+        .trim();
+      $suggestions.empty();
+      activeSuggestion = -1;
+
+      if (!query) {
+        hideSuggestions();
+        return;
+      }
+
+      const titles = $cards
+        .map(function () {
+          return {
+            title: $(this).find(".card-title").text().trim(),
+            category: $(this).find(".article-tag").text().trim()
+          };
+        })
+        .get()
+        .filter(({ title, category }) => {
+          const matchesCategory =
+            !selectedCategory ||
+            selectedCategory === "All" ||
+            selectedCategory === category;
+          return matchesCategory &&
+            title.toLocaleLowerCase("ru-RU").includes(query);
+        })
+        .map(({ title }) => title)
+        .slice(0, 5);
+
+      if (!titles.length) {
+        hideSuggestions();
+        return;
+      }
+
+      titles.forEach((title, index) => {
+        $("<li>", {
+          id: `article-suggestion-${index}`,
+          role: "option",
+          "aria-selected": "false"
+        })
+          .addClass("search-suggestion")
+          .text(title)
+          .appendTo($suggestions);
+      });
+
+      $suggestions.prop("hidden", false);
+      $input.attr("aria-expanded", "true");
+    }
+
+    function chooseSuggestion(title) {
+      $input.val(title);
+      hideSuggestions();
+      updateResults();
+      $input.trigger("focus");
+    }
+
+    $input.on("input search", function () {
+      updateResults();
+      renderSuggestions();
+    });
+
+    $input.on("keydown", function (event) {
+      const optionCount = $suggestions.find("[role='option']").length;
+      if (!optionCount) {
+        if (event.key === "Escape") hideSuggestions();
+        return;
+      }
+
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        const direction = event.key === "ArrowDown" ? 1 : -1;
+        activeSuggestion = activeSuggestion < 0
+          ? direction > 0
+            ? 0
+            : optionCount - 1
+          : (activeSuggestion + direction + optionCount) % optionCount;
+        updateActiveSuggestion();
+      } else if (event.key === "Enter" && activeSuggestion >= 0) {
+        event.preventDefault();
+        chooseSuggestion(
+          $suggestions.find("[role='option']").eq(activeSuggestion).text()
+        );
+      } else if (event.key === "Escape") {
+        hideSuggestions();
+      }
+    });
+
+    $suggestions
+      .on("mousedown", "[role='option']", (event) => event.preventDefault())
+      .on("click", "[role='option']", function () {
+        chooseSuggestion($(this).text());
+      });
+
     $(".blog-filter-controls").on("click", "button", updateResults);
   }
 })(jQuery);

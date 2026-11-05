@@ -105,13 +105,27 @@
 
       <section class="blog-search mb-4" aria-label="Поиск по статьям">
         <label for="article-search" class="form-label">Найти статью</label>
-        <input
-          class="form-control"
-          id="article-search"
-          type="search"
-          placeholder="Например, привычки или вода"
-          aria-describedby="article-search-status"
-        >
+        <div class="search-autocomplete">
+          <input
+            class="form-control"
+            id="article-search"
+            type="search"
+            placeholder="Например, привычки или вода"
+            autocomplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-controls="article-search-suggestions"
+            aria-expanded="false"
+            aria-describedby="article-search-status"
+          >
+          <ul
+            class="search-suggestions"
+            id="article-search-suggestions"
+            role="listbox"
+            aria-label="Подходящие статьи"
+            hidden
+          ></ul>
+        </div>
         <p class="search-status mt-2 mb-0" id="article-search-status" aria-live="polite">
           Показаны все статьи.
         </p>
