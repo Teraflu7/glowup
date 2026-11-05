@@ -494,6 +494,7 @@ function setupBlogFeatures() {
 
     const extra = document.createElement("p");
     extra.className = "card-text";
+    extra.classList.add("article-read-more-content");
     extra.textContent = extraTexts[index];
     extra.style.display = "none";
 

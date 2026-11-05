@@ -273,6 +273,7 @@
         restoreHighlights($card);
         const searchableText = $card
           .find(".article-tag, .card-title, .card-text")
+          .not(".article-read-more-content")
           .text()
           .toLocaleLowerCase("ru-RU");
         const category = $card.find(".article-tag").text().trim();
@@ -310,7 +311,10 @@
       const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const pattern = new RegExp(escapedQuery, "giu");
 
-      $card.find(".article-tag, .card-title, .card-text").each(function () {
+      $card
+        .find(".article-tag, .card-title, .card-text")
+        .not(".article-read-more-content")
+        .each(function () {
         const walker = document.createTreeWalker(this, NodeFilter.SHOW_TEXT);
         const textNodes = [];
         let textNode = walker.nextNode();
@@ -347,7 +351,7 @@
           fragment.appendChild(document.createTextNode(text.slice(cursor)));
           node.replaceWith(fragment);
           pattern.lastIndex = 0;
-        });
+          });
       });
     }
 
