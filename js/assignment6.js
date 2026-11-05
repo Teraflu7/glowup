@@ -4,7 +4,50 @@
   $(function () {
     console.info("jQuery is ready!");
     setupBlogSearch();
+    setupScrollProgress();
   });
+
+  function setupScrollProgress() {
+    const $progress = $("#page-scroll-progress");
+    const $bar = $progress.find(".scroll-progress-bar");
+
+    if (!$progress.length || !$bar.length) return;
+
+    let updateScheduled = false;
+
+    function updateProgress() {
+      const documentHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      const maxScroll = documentHeight - window.innerHeight;
+      const progress = maxScroll > 0
+        ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100))
+        : 0;
+      const roundedProgress = Math.round(progress);
+
+      $bar.css("width", `${progress}%`);
+      $progress
+        .attr("aria-valuenow", roundedProgress)
+        .attr("aria-valuetext", `${roundedProgress}%`);
+    }
+
+    function scheduleUpdate() {
+      if (updateScheduled) return;
+
+      updateScheduled = true;
+      window.requestAnimationFrame(() => {
+        updateScheduled = false;
+        updateProgress();
+      });
+    }
+
+    $(window).on(
+      "scroll.assignment6 resize.assignment6",
+      scheduleUpdate
+    );
+    scheduleUpdate();
+  }
 
   function setupBlogSearch() {
     const $input = $("#article-search");
