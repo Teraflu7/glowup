@@ -60,3 +60,10 @@
   color: var(--muted);
   min-height: 1.5em;
 }
+
+.search-highlight {
+  padding: 0 0.08em;
+  color: inherit;
+  background: #ffe2ef;
+  border-radius: 0.2em;
+}

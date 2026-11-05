@@ -30,6 +30,7 @@
 
       $cards.each(function () {
         const $card = $(this);
+        restoreHighlights($card);
         const searchableText = $card
           .find(".article-tag, .card-title, .card-text")
           .text()
@@ -43,6 +44,7 @@
           (!query || searchableText.includes(query));
 
         this.hidden = !matches;
+        if (query) highlightMatches($card, query);
         if (matches) visibleCount += 1;
       });
 
@@ -53,6 +55,58 @@
             : "По вашему запросу статей не найдено."
           : `Показаны все статьи (${visibleCount}).`
       );
+    }
+
+    function restoreHighlights($card) {
+      $card.find("mark.search-highlight").each(function () {
+        this.replaceWith(document.createTextNode(this.textContent));
+      });
+      $card.get(0).normalize();
+    }
+
+    function highlightMatches($card, query) {
+      const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const pattern = new RegExp(escapedQuery, "giu");
+
+      $card.find(".article-tag, .card-title, .card-text").each(function () {
+        const walker = document.createTreeWalker(this, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+        let textNode = walker.nextNode();
+
+        while (textNode) {
+          textNodes.push(textNode);
+          textNode = walker.nextNode();
+        }
+
+        textNodes.forEach((node) => {
+          const text = node.nodeValue;
+          if (!text || !pattern.test(text)) {
+            pattern.lastIndex = 0;
+            return;
+          }
+
+          pattern.lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          let cursor = 0;
+
+          for (const match of text.matchAll(pattern)) {
+            const start = match.index;
+            fragment.appendChild(
+              document.createTextNode(text.slice(cursor, start))
+            );
+
+            const mark = document.createElement("mark");
+            mark.className = "search-highlight";
+            mark.textContent = match[0];
+            fragment.appendChild(mark);
+            cursor = start + match[0].length;
+          }
+
+          fragment.appendChild(document.createTextNode(text.slice(cursor)));
+          node.replaceWith(fragment);
+          pattern.lastIndex = 0;
+        });
+      });
     }
 
     function hideSuggestions() {
