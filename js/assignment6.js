@@ -5,7 +5,70 @@
     console.info("jQuery is ready!");
     setupBlogSearch();
     setupScrollProgress();
+    setupAnimatedCounters();
   });
+
+  function setupAnimatedCounters() {
+    const counters = document.querySelectorAll("[data-count-target]");
+    if (!counters.length) return;
+
+    const prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function renderCounter(element, value) {
+      const decimals = Number(element.getAttribute("data-count-decimals"));
+      const suffix = element.getAttribute("data-count-suffix") || "";
+      element.textContent = `${value.toFixed(decimals)}${suffix}`;
+    }
+
+    function startCounter(element) {
+      const target = Number(element.getAttribute("data-count-target"));
+
+      if (!Number.isFinite(target)) {
+        console.error("Invalid counter target:", element);
+        return;
+      }
+
+      if (prefersReducedMotion) {
+        renderCounter(element, target);
+        return;
+      }
+
+      const animatedValue = { value: 0 };
+      renderCounter(element, 0);
+
+      $(animatedValue).animate(
+        { value: target },
+        {
+          duration: 1600,
+          easing: "swing",
+          step(value) {
+            renderCounter(element, value);
+          },
+          complete() {
+            renderCounter(element, target);
+          }
+        }
+      );
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      counters.forEach(startCounter);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        observer.unobserve(entry.target);
+        startCounter(entry.target);
+      });
+    }, { threshold: 0.35 });
+
+    counters.forEach((counter) => observer.observe(counter));
+  }
 
   function setupScrollProgress() {
     const $progress = $("#page-scroll-progress");
@@ -69,6 +132,8 @@
       const selectedCategory = $(".blog-filter-controls button[aria-pressed='true']")
         .text()
         .trim();
+      const hasCategoryFilter =
+        selectedCategory && selectedCategory !== "All";
       let visibleCount = 0;
 
       $cards.each(function () {
@@ -96,7 +161,9 @@
           ? visibleCount
             ? `Найдено статей: ${visibleCount}.`
             : "По вашему запросу статей не найдено."
-          : `Показаны все статьи (${visibleCount}).`
+          : hasCategoryFilter
+            ? `Статей в категории «${selectedCategory}»: ${visibleCount}.`
+            : `Показаны все статьи (${visibleCount}).`
       );
     }
 
@@ -235,6 +302,7 @@
       updateResults();
       renderSuggestions();
     });
+    $input.on("focus", renderSuggestions);
 
     $input.on("keydown", function (event) {
       const optionCount = $suggestions.find("[role='option']").length;
@@ -268,6 +336,15 @@
         chooseSuggestion($(this).text());
       });
 
-    $(".blog-filter-controls").on("click", "button", updateResults);
+    $(".blog-filter-controls").on("click", "button", function () {
+      updateResults();
+      renderSuggestions();
+    });
+
+    $(document).on("click.assignment6Search", function (event) {
+      if (!$(event.target).closest(".search-autocomplete").length) {
+        hideSuggestions();
+      }
+    });
   }
 })(jQuery);
