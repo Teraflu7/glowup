@@ -7,7 +7,87 @@
     setupBlogSearch();
     setupScrollProgress();
     setupAnimatedCounters();
+    setupCopyButton();
   });
+
+  function setupCopyButton() {
+    const $button = $("#copy-guide-button");
+    const status = document.querySelector("#copy-guide-status");
+    const guide = document.querySelector(".step-list");
+
+    if (!$button.length || !status || !guide) return;
+
+    const originalLabel = $button.text();
+    let resetTimer;
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return;
+        } catch (error) {
+          console.warn("Clipboard API unavailable; using a fallback.", error);
+        }
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      textarea.setSelectionRange(0, textarea.value.length);
+
+      try {
+        if (!document.execCommand("copy")) {
+          throw new Error("The browser did not copy the guide text.");
+        }
+      } finally {
+        textarea.remove();
+      }
+    }
+
+    $button.on("click", async function () {
+      const text = Array.from(guide.querySelectorAll("li"))
+        .map((step, index) => `${index + 1}. ${step.textContent.trim()}`)
+        .join("\n");
+
+      if (!text) {
+        throw new Error("The habit guide has no steps to copy.");
+      }
+
+      $button.prop("disabled", true);
+
+      try {
+        await copyText(text);
+        $button.text("Скопировано ✓").attr("title", "Скопировано в буфер обмена");
+        status.textContent = "План привычки скопирован в буфер обмена.";
+
+        if (typeof window.showAssignment6Toast === "function") {
+          window.showAssignment6Toast("План скопирован в буфер обмена.");
+        }
+
+        window.clearTimeout(resetTimer);
+        resetTimer = window.setTimeout(() => {
+          $button.text(originalLabel).removeAttr("title");
+          status.textContent = "";
+        }, 2000);
+      } catch (error) {
+        console.error("Could not copy the habit guide.", error);
+        status.textContent = "Не удалось скопировать план. Попробуйте ещё раз.";
+
+        if (typeof window.showAssignment6Toast === "function") {
+          window.showAssignment6Toast(
+            "Не удалось скопировать план. Проверьте разрешение браузера.",
+            { tone: "error" }
+          );
+        }
+      } finally {
+        $button.prop("disabled", false).trigger("focus");
+      }
+    });
+  }
 
   function setupToastNotifications() {
     let $container = $("#assignment6-toasts");
