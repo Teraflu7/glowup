@@ -109,6 +109,15 @@
   box-shadow: none;
 }
 
+#contact-form[aria-busy="true"] {
+  cursor: wait;
+}
+
+#contact-form button[type="submit"]:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
 .signup-field {
   display: flex;
   flex-direction: column;

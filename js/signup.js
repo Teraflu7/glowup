@@ -14,8 +14,14 @@
   const validatedFields = Array.from(form.querySelectorAll("[data-validate]"));
   const passwordField = form.querySelector("#password");
   const passwordConfirmationField = form.querySelector("#password-confirmation");
+  const submitButton = form.querySelector("button[type='submit']");
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  let submissionInProgress = false;
   let elementToRestoreFocus = openButton;
+
+  if (!submitButton) {
+    throw new Error("The signup form requires a submit button.");
+  }
 
   const getErrorElement = (field) => document.querySelector(`#${field.id}-error`);
 
@@ -121,6 +127,22 @@
 
   dialog.addEventListener("close", restoreFocus);
 
+  const setSubmissionLoading = (isLoading) => {
+    submitButton.disabled = isLoading;
+    form.setAttribute("aria-busy", String(isLoading));
+    submitButton.replaceChildren();
+
+    if (isLoading) {
+      const spinner = document.createElement("span");
+      spinner.className = "spinner-border spinner-border-sm me-2";
+      spinner.setAttribute("aria-hidden", "true");
+      submitButton.append(spinner, document.createTextNode("Подождите…"));
+      return;
+    }
+
+    submitButton.textContent = "Создать план";
+  };
+
   validatedFields.forEach((field) => {
     field.addEventListener("input", () => {
       hideSuccessMessage();
@@ -144,8 +166,10 @@
     }
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (submissionInProgress) return;
+
     hideSuccessMessage();
 
     const fieldValidity = validatedFields.map((field) => validateField(field));
@@ -156,10 +180,23 @@
       return;
     }
 
-    form.reset();
-    validatedFields.forEach((field) => setFieldError(field, ""));
-    successMessage.textContent = "Готово! Данные прошли проверку, и ваш план создан.";
-    successMessage.hidden = false;
-    successMessage.focus();
+    submissionInProgress = true;
+    setSubmissionLoading(true);
+
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 900));
+      form.reset();
+      validatedFields.forEach((field) => setFieldError(field, ""));
+      successMessage.textContent = "Готово! Данные прошли проверку, и ваш план создан.";
+      successMessage.hidden = false;
+      successMessage.focus();
+
+      if (typeof window.showAssignment6Toast === "function") {
+        window.showAssignment6Toast("Заявка успешно отправлена.");
+      }
+    } finally {
+      setSubmissionLoading(false);
+      submissionInProgress = false;
+    }
   });
 })();
