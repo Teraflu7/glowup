@@ -3,10 +3,62 @@
 (function ($) {
   $(function () {
     console.info("jQuery is ready!");
+    setupToastNotifications();
     setupBlogSearch();
     setupScrollProgress();
     setupAnimatedCounters();
   });
+
+  function setupToastNotifications() {
+    let $container = $("#assignment6-toasts");
+
+    if (!$container.length) {
+      $container = $("<div>", {
+        id: "assignment6-toasts",
+        class: "assignment6-toasts",
+        role: "region",
+        "aria-label": "Уведомления",
+        "aria-live": "polite",
+        "aria-relevant": "additions"
+      }).appendTo(document.body);
+    }
+
+    window.showAssignment6Toast = function (message, options = {}) {
+      if (typeof message !== "string" || !message.trim()) {
+        throw new TypeError("Toast message must be a non-empty string.");
+      }
+
+      const tone = options.tone === "error" ? "error" : "success";
+      const duration = Number.isFinite(options.duration)
+        ? Math.max(1000, options.duration)
+        : 4500;
+      const $toast = $("<div>", {
+        class: `assignment6-toast assignment6-toast--${tone}`,
+        role: tone === "error" ? "alert" : "status"
+      });
+      const $message = $("<p>", {
+        class: "assignment6-toast__message"
+      }).text(message);
+      const $close = $("<button>", {
+        class: "assignment6-toast__close",
+        type: "button",
+        "aria-label": "Закрыть уведомление"
+      }).text("×");
+      let removalTimer;
+
+      function removeToast() {
+        window.clearTimeout(removalTimer);
+        $toast.addClass("is-closing");
+        window.setTimeout(() => $toast.remove(), 180);
+      }
+
+      $close.on("click", removeToast);
+      $toast.append($message, $close).appendTo($container);
+      removalTimer = window.setTimeout(removeToast, duration);
+
+      return removeToast;
+    };
+  }
 
   function setupAnimatedCounters() {
     const counters = document.querySelectorAll("[data-count-target]");
