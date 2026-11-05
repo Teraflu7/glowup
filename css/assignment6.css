@@ -1,0 +1,25 @@
+.blog-search {
+  position: relative;
+  max-width: 720px;
+}
+
+.blog-search .form-label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.blog-search .form-control {
+  border-color: var(--border);
+  border-radius: 14px;
+  min-height: 48px;
+}
+
+.blog-search .form-control:focus {
+  border-color: var(--pink-500);
+  box-shadow: 0 0 0 0.2rem rgba(255, 94, 168, 0.18);
+}
+
+.search-status {
+  color: var(--muted);
+  min-height: 1.5em;
+}
