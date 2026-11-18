@@ -1,266 +1,175 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GlowUp — твой ежедневный перезапуск</title>
-    <meta
-      name="description"
-      content="GlowUp — современный дизайн для привычек, энергии и уверенности в себе."
-    />
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="css/assignment6.css" />
-    <link rel="stylesheet" href="css/home-interactions.css" />
-    <script src="js/home.js" defer></script>
-    <script src="js/assignment5.js" defer></script>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
-    <script src="js/assignment6.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link px-3 py-2" href="#main-content">Перейти к содержимому</a>
-    <div
-      class="scroll-progress"
-      id="page-scroll-progress"
-      role="progressbar"
-      aria-label="Прокрутка страницы"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-valuenow="0"
-      aria-valuetext="0%"
-    >
-      <span class="scroll-progress-bar" aria-hidden="true"></span>
-    </div>
-    <div class="page-shell pb-5">
-      <header class="site-header navbar navbar-expand-lg py-3 px-3 px-lg-5">
-        <div class="container-fluid">
-          <div class="logo"><a class="navbar-brand" href="index.html">GlowUp</a></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="mainNav">
-            <nav class="navbar-nav ms-lg-auto" aria-label="Главная навигация">
-              <a class="nav-link" href="index.html" aria-current="page">Home</a>
-              <a class="nav-link" href="blog.html">Blog</a>
-              <a class="nav-link" href="about.html">About</a>
-              <a class="nav-link" href="faq.html">FAQ</a>
-            </nav>
-          </div>
-        </div>
-      </header>
 
-      <main id="main-content">
-        <section class="hero container pt-4 pt-lg-5 pb-4 px-sm-2">
-          <div class="hero-copy">
-            <p class="eyebrow mb-3">Сделай себя лучше каждый день</p>
-            <h1 class="m-0">Преобразуй привычки в стиль жизни.</h1>
-            <p class="lead mx-auto mx-lg-0 mt-3 mb-0">
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlowUp | Build small habits</title>
+<meta content="GlowUp — современный дизайн для привычек, энергии и уверенности в себе." name="description"/>
+<link href="images/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+
+
+
+
+
+
+<link href="css/final.css" rel="stylesheet"/><script defer="True" src="js/final.js"></script></head>
+<body>
+<a class="skip-link px-3 py-2" href="#main-content">Перейти к содержимому</a>
+
+<div class="page-shell pb-5">
+<header class="site-header navbar navbar-expand-lg py-3 px-3 px-lg-5">
+<div class="container-fluid">
+<div class="logo"><a class="navbar-brand" href="index.html">GlowUp</a></div>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNav">
+<nav aria-label="Главная навигация" class="navbar-nav ms-lg-auto">
+<a aria-current="page" class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="blog.html">Blog</a>
+<a class="nav-link" href="about.html">About</a>
+<a class="nav-link" href="faq.html">FAQ</a>
+<a class="nav-link" href="habits.html">Habits</a><a class="nav-link" href="login.html">Log in</a><a class="nav-link" href="profile.html">Profile</a><button aria-label="Переключить тему" aria-pressed="false" class="mode-switch" id="mode-toggle" type="button">☾ Dark</button></nav>
+</div>
+</div>
+</header>
+<main id="main-content">
+<section class="hero container pt-4 pt-lg-5 pb-4 px-sm-2">
+<div class="hero-copy">
+<p class="eyebrow mb-3">Сделай себя лучше каждый день</p>
+<h1 class="m-0">Преобразуй привычки в стиль жизни.</h1>
+<p class="lead mx-auto mx-lg-0 mt-3 mb-0">
               GlowUp помогает выстраивать рутину, поддерживать энергию и чувствовать
               себя уверенно — без давления и хаоса.
             </p>
+<div aria-label="Основные действия" class="hero-actions btn-group mt-4" role="group">
+<a class="btn btn-primary btn-lg" href="habits.html">Выбрать привычку</a>
+<a class="btn btn-outline-primary btn-lg" href="blog.html">Читать советы</a>
+</div>
+<ul aria-label="Преимущества сервиса" class="trust-list mt-4 mb-0 ps-0">
+<li class="ps-4">Ежедневный план</li>
+<li class="ps-4">Прогресс без перегруза</li>
+<li class="ps-4">Поддержка мотивации</li>
+</ul>
+</div>
+<div aria-label="Превью приложения" class="hero-visual">
+<div class="device-card p-3">
+<div class="status-row px-2 pt-2 pb-3">
+<span class="dot dot-pink"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+<div class="screen-panel p-4">
+<div class="mini-card top-card p-3">
+<span class="mini-label">Настроение</span>
+<strong>97%</strong>
+<small>+12% за неделю</small>
+</div>
+<div class="ring-wrap py-4">
+<div class="ring">
+<div class="ring-inner">
+<span>3/5</span>
+<small>привычки</small>
+</div>
+</div>
+</div>
+<div class="task-list mt-1">
+<div class="task-item completed py-2 px-3">
+<span class="check">✓</span>
+<span>Утренняя рутина</span>
+</div>
+<div class="task-item py-2 px-3">
+<span class="check">•</span>
+<span>Тренировка</span>
+</div>
+<div class="task-item py-2 px-3">
+<span class="check">•</span>
+<span>Вода</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-            <div class="hero-actions btn-group mt-4" role="group" aria-label="Основные действия">
-              <a class="btn btn-primary btn-lg" href="about.html#contact">Попробовать</a>
-              <a class="btn btn-outline-primary btn-lg" href="blog.html#gallery-title">Смотреть демо</a>
-            </div>
 
-            <ul class="trust-list mt-4 mb-0 ps-0" aria-label="Преимущества сервиса">
-              <li class="ps-4">Ежедневный план</li>
-              <li class="ps-4">Прогресс без перегруза</li>
-              <li class="ps-4">Поддержка мотивации</li>
-            </ul>
-          </div>
+<section class="features container pt-5 mt-lg-4 px-sm-2" id="features">
+<div class="section-heading mb-4">
+<p class="eyebrow mb-3">Почему это работает</p>
+<h2>Сервис, который поддерживает без перегруза.</h2>
+</div>
+<div class="row g-4 feature-grid">
+<div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card feature-accent h-100">
+<img alt="Иллюстрация утренней рутины" class="card-img-top" decoding="async" loading="lazy" src="images/routine.svg"/>
+<div class="card-body">
+<h3 class="card-title">Личная рутина</h3>
+<p class="card-text">План под ваши цели, режим и уровень энергии — без шаблонов.</p>
+<a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
+</div>
+</article></div>
+<div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card h-100">
+<img alt="Иллюстрация ежедневных маленьких шагов" class="card-img-top" decoding="async" loading="lazy" src="images/habit-check.svg"/>
+<div class="card-body">
+<h3 class="card-title">Медленные улучшения</h3>
+<p class="card-text">Вместо резких смен — микро-шага, которые реально закрепляются.</p>
+<a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
+</div>
+</article></div>
+<div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card h-100">
+<img alt="Иллюстрация вдохновения и мотивации" class="card-img-top" decoding="async" loading="lazy" src="images/motivation.svg"/>
+<div class="card-body">
+<h3 class="card-title">Вдохновляющий дизайн</h3>
+<p class="card-text">Нежная атмосфера, прозрачная структура и приятный пользовательский опыт.</p>
+<a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
+</div>
+</article></div>
+</div>
+</section>
+<section class="cards-section container pt-5 mt-lg-4 px-sm-2">
+<h2 class="section-title m-0">Популярные рутины</h2>
+<div class="cards-container py-4">
+<article class="card">
+<img alt="Утренняя рутина" class="card-img" decoding="async" loading="lazy" src="images/routine.svg"/>
+<div class="card-content p-4">
+<h3 class="card-title mb-2">Утренняя рутина</h3>
+<p class="card-text mb-4">Начни день с бережного ухода за собой и осознанной медитации.</p>
+<a class="btn btn-primary btn-sm" href="blog.html">Подробнее</a>
+</div>
+</article>
+<article class="card">
+<img alt="Привычки пить воду" class="card-img" decoding="async" loading="lazy" src="images/water.svg"/>
+<div class="card-content p-4">
+<h3 class="card-title mb-2">Гидратация</h3>
+<p class="card-text mb-4">Узнай, как правильный водный баланс влияет на упругость кожи и энергию.</p>
+<a class="btn btn-primary btn-sm" href="blog.html">Подробнее</a>
+</div>
+</article>
+<article class="card">
+<img alt="Ежедневная мотивация" class="card-img" decoding="async" loading="lazy" src="images/motivation.svg"/>
+<div class="card-content p-4">
+<h3 class="card-title mb-2">Ментальное сияние</h3>
+<p class="card-text mb-4">Ежедневные аффирмации и маленькие привычки для уверенности в течение недели.</p>
+<a class="btn btn-primary btn-sm" href="blog.html">Подробнее</a>
+</div>
+</article>
+</div>
+</section>
 
-          <div class="hero-visual" aria-label="Превью приложения">
-            <div class="device-card p-3">
-              <div class="status-row px-2 pt-2 pb-3">
-                <span class="dot dot-pink"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-
-              <div class="screen-panel p-4">
-                <div class="mini-card top-card p-3">
-                  <span class="mini-label">Настроение</span>
-                  <strong>97%</strong>
-                  <small>+12% за неделю</small>
-                </div>
-
-                <div class="ring-wrap py-4">
-                  <div class="ring">
-                    <div class="ring-inner">
-                      <span>3/5</span>
-                      <small>привычки</small>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="task-list mt-1">
-                  <div class="task-item completed py-2 px-3">
-                    <span class="check">✓</span>
-                    <span>Утренняя рутина</span>
-                  </div>
-                  <div class="task-item py-2 px-3">
-                    <span class="check">•</span>
-                    <span>Тренировка</span>
-                  </div>
-                  <div class="task-item py-2 px-3">
-                    <span class="check">•</span>
-                    <span>Вода</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="home-tools container pb-4 px-sm-2" aria-labelledby="home-tools-title">
-          <div class="home-tools-card p-4 p-lg-5">
-            <div class="home-tools-copy">
-              <p class="eyebrow mb-2">Настрой свой GlowUp</p>
-              <h2 id="home-tools-title" class="mb-2">Цвет и время для нового старта</h2>
-              <p class="home-tools-description mb-0">
-                Выбери настроение страницы и следи за текущей датой и временем.
-              </p>
-            </div>
-
-            <div class="theme-controls" aria-labelledby="theme-controls-title">
-              <h3 id="theme-controls-title" class="home-tools-label">Фон страницы</h3>
-              <div class="theme-buttons" role="group" aria-label="Настройка цвета фона">
-                <button class="btn btn-primary" id="theme-cycle" type="button">
-                  Сменить цвет
-                </button>
-                <button class="btn btn-outline-primary" id="theme-reset" type="button" disabled>
-                  Сбросить
-                </button>
-              </div>
-              <p class="theme-status mb-0" id="theme-status" aria-live="polite">
-                Текущий фон: нежно-розовый
-              </p>
-            </div>
-
-            <div class="clock-card" aria-labelledby="clock-title">
-              <h3 id="clock-title" class="home-tools-label">Сейчас</h3>
-              <time id="current-date-time" datetime="">Загрузка даты и времени…</time>
-            </div>
-          </div>
-        </section>
-
-        <section class="stats container py-4" id="results">
-          <article class="stat-card py-4 px-3">
-            <strong data-count-target="12" data-count-decimals="0" data-count-suffix="k+">12k+</strong>
-            <span>людей уже в рутине</span>
-          </article>
-          <article class="stat-card py-4 px-3">
-            <strong data-count-target="4.9" data-count-decimals="1" data-count-suffix="/5">4.9/5</strong>
-            <span>средний рейтинг</span>
-          </article>
-          <article class="stat-card py-4 px-3">
-            <strong data-count-target="87" data-count-decimals="0" data-count-suffix="%">87%</strong>
-            <span>поддерживают привычки</span>
-          </article>
-        </section>
-
-        <section class="features container pt-5 mt-lg-4 px-sm-2" id="features">
-          <div class="section-heading mb-4">
-            <p class="eyebrow mb-3">Почему это работает</p>
-            <h2>Сервис, который поддерживает без перегруза.</h2>
-          </div>
-
-          <div class="row g-4 feature-grid">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card feature-accent h-100">
-              <img src="images/routine.svg" class="card-img-top" alt="Иллюстрация утренней рутины" loading="lazy" decoding="async">
-              <div class="card-body">
-                <h3 class="card-title">Личная рутина</h3>
-                <p class="card-text">План под ваши цели, режим и уровень энергии — без шаблонов.</p>
-                <a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
-              </div>
-            </article></div>
-
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card h-100">
-              <img src="images/habit-check.svg" class="card-img-top" alt="Иллюстрация ежедневных маленьких шагов" loading="lazy" decoding="async">
-              <div class="card-body">
-                <h3 class="card-title">Медленные улучшения</h3>
-                <p class="card-text">Вместо резких смен — микро-шага, которые реально закрепляются.</p>
-                <a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
-              </div>
-            </article></div>
-
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4"><article class="card bootstrap-card feature-card h-100">
-              <img src="images/motivation.svg" class="card-img-top" alt="Иллюстрация вдохновения и мотивации" loading="lazy" decoding="async">
-              <div class="card-body">
-                <h3 class="card-title">Вдохновляющий дизайн</h3>
-                <p class="card-text">Нежная атмосфера, прозрачная структура и приятный пользовательский опыт.</p>
-                <a class="btn btn-outline-primary btn-sm mt-3" href="blog.html">Подробнее</a>
-              </div>
-            </article></div>
-          </div>
-        </section>
-
-        <section class="cards-section container pt-5 mt-lg-4 px-sm-2">
-          <h2 class="section-title m-0">Популярные рутины</h2>
-          <div class="cards-container py-4">
-            <article class="card">
-              <img src="images/routine.svg" alt="Утренняя рутина" class="card-img" loading="lazy" decoding="async" />
-              <div class="card-content p-4">
-                <h3 class="card-title mb-2">Утренняя рутина</h3>
-                <p class="card-text mb-4">Начни день с бережного ухода за собой и осознанной медитации.</p>
-                <a href="blog.html" class="btn btn-primary btn-sm">Подробнее</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <img src="images/water.svg" alt="Привычки пить воду" class="card-img" loading="lazy" decoding="async" />
-              <div class="card-content p-4">
-                <h3 class="card-title mb-2">Гидратация</h3>
-                <p class="card-text mb-4">Узнай, как правильный водный баланс влияет на упругость кожи и энергию.</p>
-                <a href="blog.html" class="btn btn-primary btn-sm">Подробнее</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <img src="images/motivation.svg" alt="Ежедневная мотивация" class="card-img" loading="lazy" decoding="async" />
-              <div class="card-content p-4">
-                <h3 class="card-title mb-2">Ментальное сияние</h3>
-                <p class="card-text mb-4">Ежедневные аффирмации и маленькие привычки для уверенности в течение недели.</p>
-                <a href="blog.html" class="btn btn-primary btn-sm">Подробнее</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="testimonial container pt-5" id="reviews">
-          <div class="quote-card mx-auto p-4">
-            <p class="m-0">
-              “Я наконец перестала пытаться всё делать сразу. GlowUp помог мне почувствовать
-              порядок и спокойствие в жизни.”
-            </p>
-            <div class="author-row mt-4">
-              <span class="avatar">A</span>
-              <div>
-                <strong>Алина К.</strong>
-                <small>Креативный руководитель</small>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer container pt-5">
-        <div class="brand small">
-          <span class="brand-mark">G</span>
-          <span>GlowUp</span>
-        </div>
-        <p>Проект выполнили: Мукиева Тамирис и Абдубек Алина</p>
-      </footer>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+</main>
+<footer class="footer container pt-5">
+<div class="brand small">
+<span class="brand-mark">G</span>
+<span>GlowUp</span>
+</div>
+<p>Проект выполнили: Мукиева Тамирис и Абдубек Алина</p>
+</footer>
+</div>
+<script crossorigin="anonymous" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
